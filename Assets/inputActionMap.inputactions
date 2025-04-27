@@ -1,0 +1,54 @@
+{
+    "name": "inputActionMap",
+    "maps": [
+        {
+            "name": "game",
+            "id": "c82595e8-4c70-435e-a5c9-25b06b255241",
+            "actions": [
+                {
+                    "name": "rightHandPrimary",
+                    "type": "Button",
+                    "id": "75cd6978-4baa-48aa-938f-9aa0e4c1d323",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "PressSpace",
+                    "type": "Button",
+                    "id": "0309c3f2-37e4-46b8-a787-d7e45c129cf7",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "ab2c5a2d-91dc-4c7d-818a-5d940ca8c519",
+                    "path": "<XRController>{RightHand}/{PrimaryButton}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "rightHandPrimary",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "268dadd9-5333-43ee-be15-4b1623ffc962",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "PressSpace",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
