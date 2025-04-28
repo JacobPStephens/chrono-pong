@@ -9,7 +9,7 @@
                     "name": "rightHandPrimary",
                     "type": "Button",
                     "id": "75cd6978-4baa-48aa-938f-9aa0e4c1d323",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
@@ -18,7 +18,7 @@
                     "name": "PressSpace",
                     "type": "Button",
                     "id": "0309c3f2-37e4-46b8-a787-d7e45c129cf7",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false

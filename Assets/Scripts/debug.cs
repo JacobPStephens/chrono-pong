@@ -16,7 +16,11 @@ public class debug : MonoBehaviour
     public InputActionAsset inputActions;
     public float launchSpeed;
     public Vector3 spawnPoint;
+    
+    public float resetTime = 2f;
+    public float resetTimer = 2f;
 
+    public bool resetBall;
     // Start is called before the first frame update
     void Start()
     {   
@@ -40,28 +44,46 @@ public class debug : MonoBehaviour
         //     ballRb.velocity = new Vector3(0, 4f, 0f);
         // }
         // updated
+
+        Debug.Log(ballRb.velocity);
     }
 
+    
 
     void LaunchBall() {
         Debug.Log("Ball fly");
+        //ballRb.velocity = Vector3.zero;
+        ball.transform.eulerAngles = Vector3.zero;
         ballRb.velocity = Vector3.zero;
         ball.transform.position = spawnPoint;
-        ballRb.AddForce(ball.transform.forward*launchSpeed,ForceMode.Impulse);
+        ballRb.AddForce(ball.transform.forward * launchSpeed, ForceMode.Impulse);
     }
 
-    public void PressSpace(InputAction.CallbackContext context) {
-        
-        if (context.performed) { Debug.Log("space pressed.");
+    void FixedUpdate() {
+
+        if (resetBall) {
             LaunchBall();
+            resetBall = false;
         }
-        
+
     }
+
+    //void FixedUpdate() {
+    public void PressSpace(InputAction.CallbackContext context) {
+            
+            if (context.performed) { Debug.Log("space pressed.");
+                LaunchBall();
+            }
+            
+        }
     public void pressA(InputAction.CallbackContext context) {
-        
-        if (context.performed) {
-            Debug.Log("right primary pressed.");
+                
+            if (context.performed) {
+                Debug.Log("right primary pressed.");
+                resetBall = true;
+            }
         }
-    }
+    //}
+    
 
 }
