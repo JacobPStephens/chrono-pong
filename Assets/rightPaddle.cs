@@ -15,7 +15,7 @@ public class rightPaddle : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position = rightController.transform.position;
-        transform.rotation = rightController.transform.rotation;
+        // transform.position = rightController.transform.position;
+        // transform.rotation = rightController.transform.rotation;
     }
 }
