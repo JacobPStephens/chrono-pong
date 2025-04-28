@@ -82,6 +82,7 @@ MonoBehaviour:
   - {fileID: 2581694018763291031}
   - {fileID: 2382408492411569022}
   - {fileID: -4361896729587841826}
+  - {fileID: -3097454555465122756}
   - {fileID: -4156663464728650598}
   - {fileID: 4404919703487945430}
   - {fileID: 4294264514943795137}
@@ -89,6 +90,7 @@ MonoBehaviour:
   - {fileID: 4100427144426195348}
   - {fileID: 3091187616311638963}
   - {fileID: 603400470670199813}
+  - {fileID: -4287655251739034826}
   m_renderMode: 1
   m_autoColorSubmissionMode: 1
   m_colorSubmissionModes:
@@ -253,11 +255,11 @@ MonoBehaviour:
   m_Name: XrPerformanceSettingsFeature Android
   m_EditorClassIdentifier: 
   m_enabled: 0
-  nameUi: 
-  version: 
-  featureIdInternal: 
-  openxrExtensionStrings: 
-  company: 
+  nameUi: XR Performance Settings
+  version: 1.0.0
+  featureIdInternal: com.unity.openxr.feature.extension.performance_settings
+  openxrExtensionStrings: XR_EXT_performance_settings
+  company: Unity
   priority: 0
   required: 0
 --- !u!114 &-4156663464728650598
@@ -313,11 +315,11 @@ MonoBehaviour:
   m_Name: MetaQuestTouchPlusControllerProfile Android
   m_EditorClassIdentifier: 
   m_enabled: 0
-  nameUi: 
-  version: 
-  featureIdInternal: 
-  openxrExtensionStrings: 
-  company: 
+  nameUi: Meta Quest Touch Plus Controller Profile
+  version: 0.0.1
+  featureIdInternal: com.unity.openxr.feature.input.metaquestplus
+  openxrExtensionStrings: XR_META_touch_controller_plus
+  company: Unity
   priority: 0
   required: 0
 --- !u!114 &-2918662542078540876
@@ -780,8 +782,6 @@ MonoBehaviour:
   m_Name: Standalone
   m_EditorClassIdentifier: 
   features:
-  - {fileID: -3584398667708934907}
-  - {fileID: 5846962471231969861}
   - {fileID: 2627038776441480749}
   - {fileID: 2693137549995142420}
   - {fileID: 8811319558497467087}
@@ -790,6 +790,7 @@ MonoBehaviour:
   - {fileID: -9002944254099348181}
   - {fileID: -8070775123938266986}
   - {fileID: 1106567131616063224}
+  - {fileID: 5846962471231969861}
   - {fileID: -4666954357407284852}
   - {fileID: 4895544647920649885}
   - {fileID: -511247607293773586}
@@ -798,6 +799,7 @@ MonoBehaviour:
   - {fileID: -2918662542078540876}
   - {fileID: -9081388126678885107}
   - {fileID: 6661006083071056473}
+  - {fileID: -3584398667708934907}
   m_renderMode: 1
   m_autoColorSubmissionMode: 1
   m_colorSubmissionModes:

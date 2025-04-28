@@ -1467,7 +1467,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1447033735}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 1.2505145, y: -12.161125, z: -36.57691}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1483,16 +1483,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 1447033735}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0cbce903a12463a48be568ceaa0ea89e, type: 3}
+  m_Script: {fileID: 11500000, guid: e5504a5234f9a494197ab821dde16150, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   leftController: {fileID: 1646568606}
   rightController: {fileID: 1087150213}
   ball: {fileID: 1718148861}
-  ballRb: {fileID: 0}
+  ballRb: {fileID: 1718148862}
   inputActions: {fileID: -944628639613478452, guid: 1b1b3299e515e684a881388ef34ec27e,
     type: 3}
-  launchSpeed: 10
+  launchSpeed: 2
+  spawnPoint: {x: 0, y: 3, z: -7}
 --- !u!114 &1447033738
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1594,7 +1595,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9e83894efbc396458dee07c86a60d09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rightController: {fileID: 1087150213}
 --- !u!136 &1684881431
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1727,7 +1727,7 @@ Rigidbody:
   m_ImplicitTensor: 1
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_Constraints: 0
   m_CollisionDetection: 1
 --- !u!135 &1718148863
@@ -1810,7 +1810,7 @@ Transform:
   m_GameObject: {fileID: 1718148861}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 3.55, z: -6.79}
+  m_LocalPosition: {x: 0, y: 3, z: -7}
   m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
   m_ConstrainProportionsScale: 0
   m_Children: []

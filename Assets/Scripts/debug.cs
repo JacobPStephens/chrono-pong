@@ -15,6 +15,8 @@ public class debug : MonoBehaviour
     public Rigidbody ballRb;
     public InputActionAsset inputActions;
     public float launchSpeed;
+    public Vector3 spawnPoint;
+
     // Start is called before the first frame update
     void Start()
     {   
@@ -42,7 +44,10 @@ public class debug : MonoBehaviour
 
 
     void LaunchBall() {
-        ballRb.velocity = new Vector3(0f, launchSpeed, 0f);
+        Debug.Log("Ball fly");
+        ballRb.velocity = Vector3.zero;
+        ball.transform.position = spawnPoint;
+        ballRb.AddForce(ball.transform.forward*launchSpeed,ForceMode.Impulse);
     }
 
     public void PressSpace(InputAction.CallbackContext context) {
