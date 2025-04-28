@@ -25,6 +25,7 @@ public class debug : MonoBehaviour
     void Start()
     {   
         ballRb = ball.GetComponent<Rigidbody>();
+        spawnPoint = ball.transform.position;
 
     }
 
