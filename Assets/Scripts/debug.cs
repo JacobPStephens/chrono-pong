@@ -5,7 +5,8 @@ using UnityEngine.InputSystem;
 
 public class debug : MonoBehaviour
 {
-
+    
+    [Header("References")]
 
     public GameObject leftController;
     public GameObject rightController;
