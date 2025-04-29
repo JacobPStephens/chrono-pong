@@ -46,13 +46,13 @@ public class debug : MonoBehaviour
         // }
         // updated
 
-        Debug.Log(ballRb.velocity);
+        //Debug.Log(ballRb.velocity);
     }
 
     
 
     void LaunchBall() {
-        Debug.Log("Ball fly");
+        //Debug.Log("Ball fly");
         //ballRb.velocity = Vector3.zero;
         ball.transform.eulerAngles = Vector3.zero;
         ballRb.velocity = Vector3.zero;
@@ -72,7 +72,7 @@ public class debug : MonoBehaviour
     //void FixedUpdate() {
     public void PressSpace(InputAction.CallbackContext context) {
             
-            if (context.performed) { Debug.Log("space pressed.");
+            if (context.performed) {
                 LaunchBall();
             }
             
@@ -80,7 +80,6 @@ public class debug : MonoBehaviour
     public void pressA(InputAction.CallbackContext context) {
                 
             if (context.performed) {
-                Debug.Log("right primary pressed.");
                 resetBall = true;
             }
         }
