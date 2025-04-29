@@ -51,7 +51,7 @@ public class debug : MonoBehaviour
 
     
 
-    void LaunchBall() {
+    public void LaunchBall() {
         //Debug.Log("Ball fly");
         //ballRb.velocity = Vector3.zero;
         ball.transform.eulerAngles = Vector3.zero;
