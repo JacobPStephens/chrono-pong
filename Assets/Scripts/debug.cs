@@ -57,7 +57,7 @@ public class debug : MonoBehaviour
         ball.transform.eulerAngles = Vector3.zero;
         ballRb.velocity = Vector3.zero;
         ball.transform.position = spawnPoint;
-        ballRb.AddForce(ball.transform.forward * launchSpeed, ForceMode.Impulse);
+        ballRb.AddForce(ball.transform.forward * launchSpeed, ForceMode.VelocityChange);
     }
 
     void FixedUpdate() {
@@ -81,6 +81,7 @@ public class debug : MonoBehaviour
                 
             if (context.performed) {
                 resetBall = true;
+                //Time.timeScale = 0.5f;
             }
         }
     //}

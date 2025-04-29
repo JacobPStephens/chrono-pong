@@ -29,7 +29,7 @@ public class opponent : MonoBehaviour
 
             ball.GetComponent<Rigidbody>().velocity = Vector3.zero;
             ball.GetComponent<Rigidbody>().AddForce(returnVelocity, ForceMode.VelocityChange);
-            Debug.Log(returnVelocity);
+            //Debug.Log(returnVelocity);
             returnBall = false;
 
         }
@@ -42,14 +42,14 @@ public class opponent : MonoBehaviour
         float shotAngle = GetRandomShotAngle();
         target.transform.position = targetPos;
 
-        Debug.Log("Launching ball at target " +targetPos+ " with shot angle " +shotAngle);
+        //Debug.Log("Launching ball at target " +targetPos+ " with shot angle " +shotAngle);
         Vector3 velocity = GetVelocityGivenAngle(ball.transform.position, targetPos, shotAngle);
 
 
         //ballRb.AddForce(velocity, ForceMode.VelocityChange);
         returnBall = true;
         returnVelocity = velocity;
-        Debug.Log("Changed velocity to " + velocity);//;+ " Actual Velocity " + ballRb.velocity);
+        //Debug.Log("Changed velocity to " + velocity);//;+ " Actual Velocity " + ballRb.velocity);
 
     }
 
@@ -59,8 +59,8 @@ public class opponent : MonoBehaviour
     }
     private Vector3 GetRandomTarget() {
         float backEdge = 2.66f;
-        float leftEdge = -0.89f;
-        float rightEdge = 0.45f;
+        float leftEdge = -0.4f;
+        float rightEdge = 0.2f;
         float frontEdge = 2.00f;
         return new Vector3(Random.Range(leftEdge, rightEdge), 1f, Random.Range(frontEdge, backEdge));
     }
