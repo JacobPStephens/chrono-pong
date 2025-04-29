@@ -20,19 +20,21 @@ public class debug : MonoBehaviour
     public float resetTime = 2f;
     public float resetTimer = 2f;
 
+    public float yBounds;
+
     public bool resetBall;
+
     // Start is called before the first frame update
     void Start()
     {   
         ballRb = ball.GetComponent<Rigidbody>();
         spawnPoint = ball.transform.position;
-
+        ballRb.AddForce(ball.transform.forward * launchSpeed, ForceMode.Impulse);
     }
 
     // Update is called once per frame
     void Update()
     {
-
         // Debug.Log("LeftControllerPosition" + leftController.transform.position);
         // Debug.Log("RightControllerPosition" + rightController.transform.position);
 
@@ -46,18 +48,29 @@ public class debug : MonoBehaviour
         // }
         // updated
 
-        //Debug.Log(ballRb.velocity);
+        Debug.Log(ballRb.velocity);
+    }
+
+    IEnumerator ResetBall(){
+        ballRb.useGravity = false;
+        ball.transform.eulerAngles = Vector3.zero;
+        ballRb.velocity = Vector3.zero;
+        ball.transform.position = spawnPoint;
+        yield return new WaitForSecondsRealtime(3);
+        //Debug.Log("waiting");
+        ballRb.useGravity = true;
+        ballRb.AddForce(ball.transform.forward * launchSpeed, ForceMode.Impulse);
     }
 
     
 
-    void LaunchBall() {
+    public void LaunchBall() {
         //Debug.Log("Ball fly");
         //ballRb.velocity = Vector3.zero;
-        ball.transform.eulerAngles = Vector3.zero;
-        ballRb.velocity = Vector3.zero;
-        ball.transform.position = spawnPoint;
-        ballRb.AddForce(ball.transform.forward * launchSpeed, ForceMode.Impulse);
+        // ball.transform.eulerAngles = Vector3.zero;
+        // ballRb.velocity = Vector3.zero;
+        // ball.transform.position = spawnPoint;
+        StartCoroutine(ResetBall());
     }
 
     void FixedUpdate() {
@@ -65,6 +78,11 @@ public class debug : MonoBehaviour
         if (resetBall) {
             LaunchBall();
             resetBall = false;
+        }
+
+        if(ball.transform.position.y < yBounds){
+            resetBall = true;
+            //StartCoroutine(ResetBall());
         }
 
     }
