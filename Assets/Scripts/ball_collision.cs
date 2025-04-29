@@ -12,7 +12,7 @@ public class ball_collision : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        // ut oh spagetti oh
     }
 
     // Update is called once per frame
