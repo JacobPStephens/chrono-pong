@@ -20,9 +20,16 @@ public class ball_collision : MonoBehaviour
     {
         
     }
+
+    void OnCollisionEnter(Collision col){
+        if(col.gameObject.name == "floor"){
+            debugScript.resetBall = true;
+        }
+    }
+
     void OnCollisionExit(Collision collisionInfo){
         if(collisionInfo.gameObject.name == "net" && transform.position.z >= 0.331f){
-            debugScript.LaunchBall();
+            debugScript.resetBall = true;
         }
     }
 }

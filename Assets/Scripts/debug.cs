@@ -21,6 +21,9 @@ public class debug : MonoBehaviour
     public float resetTimer = 2f;
 
     public bool resetBall;
+
+    public float yBounds;
+
     // Start is called before the first frame update
     void Start()
     {   
@@ -52,18 +55,32 @@ public class debug : MonoBehaviour
     
 
     public void LaunchBall() {
-        //Debug.Log("Ball fly");
-        //ballRb.velocity = Vector3.zero;
+        ballRb.AddForce(new Vector3(0,0,1) * launchSpeed, ForceMode.VelocityChange);
+    }
+
+    IEnumerator ResetBall(){
+        ball.transform.position = spawnPoint;
         ball.transform.eulerAngles = Vector3.zero;
         ballRb.velocity = Vector3.zero;
-        ball.transform.position = spawnPoint;
-        ballRb.AddForce(ball.transform.forward * launchSpeed, ForceMode.VelocityChange);
+        ballRb.useGravity = false;
+
+        yield return new WaitForSecondsRealtime(3);
+
+        ballRb.useGravity = true;
+        
+        LaunchBall();
+
     }
 
     void FixedUpdate() {
 
+        if(ball.transform.position.y < yBounds){
+            resetBall = true;
+        }
+
         if (resetBall) {
-            LaunchBall();
+            //LaunchBall();
+            StartCoroutine(ResetBall());
             resetBall = false;
         }
 
@@ -73,7 +90,7 @@ public class debug : MonoBehaviour
     public void PressSpace(InputAction.CallbackContext context) {
             
             if (context.performed) {
-                LaunchBall();
+                resetBall = true;
             }
             
         }

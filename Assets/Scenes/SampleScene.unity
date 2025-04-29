@@ -1619,6 +1619,7 @@ MonoBehaviour:
   resetTime: 2
   resetTimer: 2
   resetBall: 0
+  yBounds: -15
 --- !u!114 &1447033738
 MonoBehaviour:
   m_ObjectHideFlags: 0
