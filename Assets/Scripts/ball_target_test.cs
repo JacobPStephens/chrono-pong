@@ -32,8 +32,7 @@ public class ball_target_test : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // Jacob's comment
-        //heyo bozo
+        // Changing main
     }
 
     public Vector3 GetVelocityGivenAngle(Vector3 currentPosition, Vector3 targetPosition, float verticalDegrees) {
