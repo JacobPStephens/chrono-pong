@@ -7,8 +7,6 @@ public class ball_collision : MonoBehaviour
 
     public debug debugScript;
 
-    public GameObject net;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -22,13 +20,14 @@ public class ball_collision : MonoBehaviour
     }
 
     void OnCollisionEnter(Collision col){
+        Debug.Log(col.gameObject.name);
         if(col.gameObject.name == "floor"){
             debugScript.resetBall = true;
         }
     }
 
     void OnCollisionExit(Collision collisionInfo){
-        if(collisionInfo.gameObject.name == "net" && transform.position.z >= 0.331f){
+        if(collisionInfo.gameObject.name == "net"){
             debugScript.resetBall = true;
         }
     }

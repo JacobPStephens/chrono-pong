@@ -22,7 +22,7 @@ public class debug : MonoBehaviour
 
     public bool resetBall;
 
-    public float yBounds;
+    // public float yBounds;
 
     // Start is called before the first frame update
     void Start()
@@ -35,6 +35,13 @@ public class debug : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        // if ball needs to be reset, start reset ball corutine and set reset ball to false
+        if (resetBall) {
+            //LaunchBall();
+            StartCoroutine(ResetBall());
+            resetBall = false;
+        }
 
         // Debug.Log("LeftControllerPosition" + leftController.transform.position);
         // Debug.Log("RightControllerPosition" + rightController.transform.position);
@@ -64,7 +71,7 @@ public class debug : MonoBehaviour
         ballRb.velocity = Vector3.zero;
         ballRb.useGravity = false;
 
-        yield return new WaitForSecondsRealtime(3);
+        yield return new WaitForSecondsRealtime(2);
 
         ballRb.useGravity = true;
         
@@ -74,15 +81,15 @@ public class debug : MonoBehaviour
 
     void FixedUpdate() {
 
-        if(ball.transform.position.y < yBounds){
-            resetBall = true;
-        }
+        // if(ball.transform.position.y < yBounds){
+        //     resetBall = true;
+        // }
 
-        if (resetBall) {
-            //LaunchBall();
-            StartCoroutine(ResetBall());
-            resetBall = false;
-        }
+        // if (resetBall) {
+        //     //LaunchBall();
+        //     StartCoroutine(ResetBall());
+        //     resetBall = false;
+        // }
 
     }
 
