@@ -27,4 +27,8 @@ public class ball : MonoBehaviour
             debugScript.resetBall = true;
         }
     }
+
+    void OnTriggerEnter(Collider zone){
+        
+    }
 }
