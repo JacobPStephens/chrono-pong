@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ball_collision : MonoBehaviour
+public class ball : MonoBehaviour
 {
 
     public debug debugScript;
@@ -20,14 +20,10 @@ public class ball_collision : MonoBehaviour
     }
 
     void OnCollisionEnter(Collision col){
-        Debug.Log(col.gameObject.name);
         if(col.gameObject.name == "floor"){
             debugScript.resetBall = true;
         }
-    }
-
-    void OnCollisionExit(Collision collisionInfo){
-        if(collisionInfo.gameObject.name == "net"){
+        if(col.gameObject.name == "net"){
             debugScript.resetBall = true;
         }
     }
