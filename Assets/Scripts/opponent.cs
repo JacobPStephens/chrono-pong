@@ -10,6 +10,9 @@ public class opponent : MonoBehaviour
     public GameObject ball; 
 
     public GameObject target;
+
+    public ball ballScript;
+
     // Start is called before the first frame update
     void Start()
     {   
@@ -49,6 +52,7 @@ public class opponent : MonoBehaviour
         //ballRb.AddForce(velocity, ForceMode.VelocityChange);
         returnBall = true;
         returnVelocity = velocity;
+        ballScript.playerLastTouched = false;
         //Debug.Log("Changed velocity to " + velocity);//;+ " Actual Velocity " + ballRb.velocity);
 
     }

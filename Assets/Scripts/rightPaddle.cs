@@ -15,6 +15,9 @@ public class rightPaddle : MonoBehaviour
     public float debugTime;
     public bool nextFrame;
     public GameObject ball;
+
+    public ball ballScript;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -54,6 +57,7 @@ public class rightPaddle : MonoBehaviour
         Debug.Log("HIT BALL. PREVIOUS BALL VELOCITY = " + ballRb.velocity);
         Debug.Log("HIT BALL. PADDLE VELOCITY = " + paddleVelocity);
         ballRb.AddForce(paddleVelocity, ForceMode.Impulse);
+        ballScript.playerLastTouched = true;
         nextFrame = true;
         //debugTimer = debugTime;
 
