@@ -63,11 +63,11 @@ public class rightPaddle : MonoBehaviour
     void OnCollisionEnter(Collision col) {
         //Debug.Log("paddle collided with " + col.gameObject.name);
 
-        if (col.gameObject.name != "ball") {
-            return;
+        if (col.gameObject.name == "ball") {
+            ballHit = true;
         }
 
-        ballHit = true;
+        
 
     }
     // Update is called once per frame
