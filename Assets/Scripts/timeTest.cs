@@ -18,13 +18,19 @@ public class timeTest : MonoBehaviour
     public float meterPassiveRegen;
     public float bufferTimer;
     public float bufferTime;
-    public float rewindDuration;
+    public float rewindTime;
+    public float rewindTimer;
     public InputActionAsset inputActions;
+    public Queue<Vector3> pos = new Queue<Vector3>();
+    public int maxRecordings;
+    public float recordInterval;
+    public float playbackInterval;
 
     // Start is called before the first frame update
     void Start()
     {
         timeState = "normal";
+        InvokeRepeating("RecordPositions", 0f, recordInterval);
     }
     void Update()
     {   
@@ -33,10 +39,25 @@ public class timeTest : MonoBehaviour
             ChangeTimeScale(0.5f);
             timeState = "slow";
         }
+        if (timeState == "rewind" && rewindTimer <= 0f) {
+            Debug.Log("Stop rewind debug");
+            StopRewind();
+        }
 
         UpdateDebugTask();
         HandleMeter();
         HandleTimers();
+    }
+
+    void RecordPositions() {
+
+        pos.Enqueue(transform.position);
+        if (pos.Count > maxRecordings) {
+            pos.Dequeue();
+        }
+        for (int i = 0; i < maxRecordings; i++) {
+            Debug.Log(pos.ToArray()[i]);
+        }
     }
 
 
@@ -65,12 +86,24 @@ public class timeTest : MonoBehaviour
                 bufferTimer = -100f;
             }
         }
-
-
+        if (timeState == "rewind") {
+            meter = 0f;
+        }
 
         meter = Mathf.Max(0f, meter);
         meter = Mathf.Min(meter, maxMeter);
 
+    }
+
+    void StartRewind() {
+        rewindTimer = rewindTime;
+        GetComponent<Rigidbody>().isKinematic = true;
+        Debug.Log("Start rewind.");
+    }
+    void StopRewind() {
+        GetComponent<Rigidbody>().isKinematic = false;
+        timeState = "normal";
+        Debug.Log("Stop rewind debug.");
     }
     void UpdateDebugTask() {
         GameObject txtObj = GameObject.FindGameObjectWithTag("text");
@@ -80,6 +113,9 @@ public class timeTest : MonoBehaviour
     void HandleTimers() {
         if (bufferTimer > 0f) {
             bufferTimer -= Time.deltaTime;
+        }
+        if (rewindTimer > 0f) {
+            rewindTimer -= Time.deltaTime;
         }
         
     }
@@ -127,9 +163,14 @@ public class timeTest : MonoBehaviour
     }
 
     void OnPress() {
-        if (bufferTimer > 0f) { /// && left && right) {
-            //StartCoroutine(Rewind());
-            timeState = "rewind";
+        if (bufferTimer > 0f) {
+            if (meter >= 0.95f * maxMeter){
+                StartRewind();
+                timeState = "rewind";
+            }
+            else {
+                bufferTimer = -100f;
+            }
         }
         else {
             bufferTimer = bufferTime;
@@ -137,8 +178,8 @@ public class timeTest : MonoBehaviour
     }
     void OnRelease() {
         bufferTimer = -100f;
-
-        if (!left && !right) {
+        rewindTimer = 0f;
+        if (!left && !right && timeState == "slow") {
             ChangeTimeScale(1.0f);
             timeState = "normal";
         }
