@@ -364,7 +364,7 @@ MonoBehaviour:
   inputActions: {fileID: -944628639613478452, guid: 1b1b3299e515e684a881388ef34ec27e,
     type: 3}
   maxRecordings: 3
-  recordInterval: 1
+  recordInterval: 0.1
   playbackInterval: 0
 --- !u!1 &917490189
 GameObject:
