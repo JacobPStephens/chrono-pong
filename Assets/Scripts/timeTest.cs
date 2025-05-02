@@ -21,19 +21,26 @@ public class timeTest : MonoBehaviour
     public float rewindTime;
     public float rewindTimer;
     public InputActionAsset inputActions;
-    public Queue<Vector3> pos = new Queue<Vector3>();
+    public LinkedList<(Vector3, Vector3)> state = new LinkedList<(Vector3, Vector3)>();
+
     public int maxRecordings;
     public float recordInterval;
     public float playbackInterval;
+    public Rigidbody rb;
+    
+    private (Vector3, Vector3) mostRecentState;
+    private bool record; // public for debug only
 
     // Start is called before the first frame update
     void Start()
     {
+        rb = GetComponent<Rigidbody>();
         timeState = "normal";
-        InvokeRepeating("RecordPositions", 0f, recordInterval);
+        InvokeRepeating("SetRecordTrue", 0f, recordInterval);
     }
     void Update()
     {   
+
         // go until slow
         if ((timeState == "normal") && (bufferTimer <= 0f && bufferTimer > -50f)) {
             ChangeTimeScale(0.5f);
@@ -48,31 +55,42 @@ public class timeTest : MonoBehaviour
         HandleMeter();
         HandleTimers();
     }
-
-    void RecordPositions() {
-
-        pos.Enqueue(transform.position);
-        if (pos.Count > maxRecordings) {
-            pos.Dequeue();
+    void FixedUpdate() {
+        if (reset) {
+            ResetBall();
+            SimulateHit();
+            reset = false;
         }
-        for (int i = 0; i < maxRecordings; i++) {
-            Debug.Log(pos.ToArray()[i]);
+        if (record) {
+            Record();
+            record = false;
         }
+
     }
 
+    void Record() {
+        state.AddLast((transform.position, rb.velocity));
+        if (state.Count > maxRecordings) {
+            state.RemoveFirst();
+        }
+    }
+    void SetRecordTrue() {
+        if (timeState == "rewind") {
+            return;
+        }
+        record = true;
+    }
 
-    // Maybe use a timer instead because if you exit early then coroutine might not work
-    // IEnumerator Rewind() {
+    void PrintQueue(Queue<Vector3> q) {
+        string res = "";
 
-    //     timeState = "rewind";
-    //     GetComponent<Rigidbody>().isKinematic = false;
+        for (int i = 0; i < q.Count; i++) {
+            res += q.ToArray()[i] + " ";
+        }
+        Debug.Log("Queue: " + res);
+        
+    }
 
-    //     yield return new WaitForSeconds(rewindDuration);
-
-    //     timeState = "normal";
-    //     GetComponent<Rigidbody>().isKinematic = true;  
-
-    // }
 
     void HandleMeter() {
         if (timeState == "normal") {
@@ -95,14 +113,43 @@ public class timeTest : MonoBehaviour
 
     }
 
+    IEnumerator Playback() {
+
+        Debug.Log("inside sewind");
+        while (timeState == "rewind") {
+
+            if (state.Count > 0) {
+                mostRecentState = state.Last.Value;
+                state.RemoveLast();
+                transform.position = mostRecentState.Item1;
+            }
+
+            //Debug.DrawLine(transform.position, transform.position + mostRecentState.Item2);
+            Debug.Log("rewinding...");
+            yield return new WaitForSeconds(playbackInterval);
+        }
+
+
+    }
+
     void StartRewind() {
+        timeState = "rewind";
         rewindTimer = rewindTime;
+        GameObject.FindGameObjectWithTag("light").GetComponent<Light>().enabled = false;
+
+        StartCoroutine(Playback());
         GetComponent<Rigidbody>().isKinematic = true;
         Debug.Log("Start rewind.");
     }
     void StopRewind() {
-        GetComponent<Rigidbody>().isKinematic = false;
+
+
         timeState = "normal";
+        GameObject.FindGameObjectWithTag("light").GetComponent<Light>().enabled = true;
+        GetComponent<Rigidbody>().isKinematic = false;
+
+        rb.velocity = mostRecentState.Item2;    
+        state.RemoveLast();
         Debug.Log("Stop rewind debug.");
     }
     void UpdateDebugTask() {
@@ -132,19 +179,14 @@ public class timeTest : MonoBehaviour
         }
     }
 
-    void FixedUpdate() {
-        if (reset) {
-            ResetBall();
-            SimulateHit();
-            reset = false;
-        }
 
-    }
 
     void ResetBall() {            
 
-        transform.position = Vector3.zero;
+        transform.position = Vector3.zero; 
+        
         GetComponent<Rigidbody>().velocity = Vector3.zero;
+        rb.velocity = Vector3.up * 5f;
     }
 
     // Update is called once per frame
@@ -166,7 +208,6 @@ public class timeTest : MonoBehaviour
         if (bufferTimer > 0f) {
             if (meter >= 0.95f * maxMeter){
                 StartRewind();
-                timeState = "rewind";
             }
             else {
                 bufferTimer = -100f;

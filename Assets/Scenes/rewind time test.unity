@@ -137,6 +137,7 @@ GameObject:
   - component: {fileID: 271606606}
   - component: {fileID: 271606612}
   - component: {fileID: 271606613}
+  - component: {fileID: 271606614}
   m_Layer: 0
   m_Name: ball
   m_TagString: Untagged
@@ -359,13 +360,26 @@ MonoBehaviour:
   meterPassiveRegen: 0.05
   bufferTimer: 0
   bufferTime: 0.3
-  rewindTime: 2
+  rewindTime: 4
   rewindTimer: 0
   inputActions: {fileID: -944628639613478452, guid: 1b1b3299e515e684a881388ef34ec27e,
     type: 3}
-  maxRecordings: 3
-  recordInterval: 0.1
-  playbackInterval: 0
+  maxRecordings: 3000
+  recordInterval: 0.001
+  playbackInterval: 0.03
+  rb: {fileID: 0}
+--- !u!114 &271606614
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 271606604}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6037b91a34f2b38469cd2ae1b5fda447, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &917490189
 GameObject:
   m_ObjectHideFlags: 0
@@ -379,7 +393,7 @@ GameObject:
   - component: {fileID: 917490192}
   m_Layer: 0
   m_Name: Directional Light
-  m_TagString: Untagged
+  m_TagString: light
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
