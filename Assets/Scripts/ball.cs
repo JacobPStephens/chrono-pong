@@ -24,7 +24,7 @@ public class ball : MonoBehaviour
     }
 
     void OnTriggerEnter(Collider zone){
-        Debug.Log(zone.gameObject.name);
+        //Debug.Log(zone.gameObject.name);
         if(zone.gameObject.name == "floor_zone"){
             OutOfBoundsZone();
         }
@@ -43,7 +43,7 @@ public class ball : MonoBehaviour
     }
     public void TriggerPlayerZone(){
         if(playerLastZone){
-            Debug.Log("Player gets point");
+            //Debug.Log("Player gets point");
             EndRound();
         }
         else{
@@ -52,7 +52,7 @@ public class ball : MonoBehaviour
     }
     public void TriggerOpponentZone(){
         if(!playerLastZone){
-            Debug.Log("Opponent gets point");
+            //Debug.Log("Opponent gets point");
             EndRound();
         }
         else{
@@ -60,28 +60,28 @@ public class ball : MonoBehaviour
         }
     }
     public void TriggerPlayerNetZone(){
-        Debug.Log("Opponent gets point");
+        //Debug.Log("Opponent gets point");
         EndRound();
     }
     public void TriggerOpponentNetZone(){
-        Debug.Log("Player gets point");
+        //Debug.Log("Player gets point");
         EndRound();
     }
     public void OutOfBoundsZone(){
         if(playerLastTouched == playerLastZone){
             if(playerLastTouched){
-                Debug.Log("Opponent gets point");
+                //Debug.Log("Opponent gets point");
             }
             else{
-                Debug.Log("Player gets point");
+                //Debug.Log("Player gets point");
             }
         }
         else{
             if(playerLastTouched){
-                Debug.Log("Player gets point");
+                //Debug.Log("Player gets point");
             }
             else{
-                Debug.Log("Opponent gets point");
+                //Debug.Log("Opponent gets point");
             }
         }
 

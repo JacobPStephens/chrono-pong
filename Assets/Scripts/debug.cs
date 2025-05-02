@@ -22,6 +22,7 @@ public class debug : MonoBehaviour
 
     public bool resetBall;
 
+
     // public float yBounds;
 
     // Start is called before the first frame update
@@ -37,11 +38,9 @@ public class debug : MonoBehaviour
     {
 
         // if ball needs to be reset, start reset ball corutine and set reset ball to false
-        if (resetBall) {
-            //LaunchBall();
-            StartCoroutine(ResetBall());
-            resetBall = false;
-        }
+
+
+
 
         // Debug.Log("LeftControllerPosition" + leftController.transform.position);
         // Debug.Log("RightControllerPosition" + rightController.transform.position);
@@ -59,19 +58,19 @@ public class debug : MonoBehaviour
         //Debug.Log(ballRb.velocity);
     }
 
-    
+
 
     public void LaunchBall() {
         ballRb.AddForce(new Vector3(0,0,1) * launchSpeed, ForceMode.VelocityChange);
     }
 
-    IEnumerator ResetBall(){
+    void ResetBall(){
         ball.transform.position = spawnPoint;
         ball.transform.eulerAngles = Vector3.zero;
         ballRb.velocity = Vector3.zero;
         ballRb.useGravity = false;
 
-        yield return new WaitForSecondsRealtime(2);
+        //yield return new WaitForSecondsRealtime(0.00000000001f);
 
         ballRb.useGravity = true;
         
@@ -80,16 +79,12 @@ public class debug : MonoBehaviour
     }
 
     void FixedUpdate() {
-
-        // if(ball.transform.position.y < yBounds){
-        //     resetBall = true;
-        // }
-
-        // if (resetBall) {
-        //     //LaunchBall();
-        //     StartCoroutine(ResetBall());
-        //     resetBall = false;
-        // }
+        if (resetBall) {
+            //LaunchBall();
+            //StartCoroutine(ResetBall());
+            ResetBall();
+            resetBall = false;
+        }
 
     }
 
@@ -104,6 +99,8 @@ public class debug : MonoBehaviour
     public void pressA(InputAction.CallbackContext context) {
                 
             if (context.performed) {
+
+                Debug.Log("a pressed");
                 resetBall = true;
                 //Time.timeScale = 0.5f;
             }
