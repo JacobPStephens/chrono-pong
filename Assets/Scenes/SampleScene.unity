@@ -1265,8 +1265,8 @@ Transform:
   m_GameObject: {fileID: 903057168}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 35.09162, y: 20.910292, z: 10.240113}
-  m_LocalScale: {x: 10.622423, y: 0.05, z: 10}
+  m_LocalPosition: {x: 35.09162, y: 15.5, z: 10.240113}
+  m_LocalScale: {x: 20, y: 10, z: 20}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1627040700}
@@ -1651,7 +1651,7 @@ GameObject:
   - component: {fileID: 1204931228}
   - component: {fileID: 1204931227}
   m_Layer: 0
-  m_Name: opponent_net_zone (1)
+  m_Name: opponent_net_zone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2358,6 +2358,7 @@ MonoBehaviour:
   rightController: {fileID: 1087150213}
   ball: {fileID: 1718148861}
   ballRb: {fileID: 1718148862}
+  ballScript: {fileID: 1718148867}
   inputActions: {fileID: -944628639613478452, guid: 1b1b3299e515e684a881388ef34ec27e,
     type: 3}
   launchSpeed: -9.15
@@ -3042,6 +3043,8 @@ MonoBehaviour:
   debugScript: {fileID: 1447033737}
   playerLastZone: 0
   playerLastTouched: 0
+  doubleBounceBuffer: 0
+  doubleBounceTime: 0.2
 --- !u!1 &1855398764
 GameObject:
   m_ObjectHideFlags: 0

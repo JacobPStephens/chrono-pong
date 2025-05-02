@@ -13,6 +13,7 @@ public class debug : MonoBehaviour
 
     public GameObject ball;
     public Rigidbody ballRb;
+    public ball ballScript;
     public InputActionAsset inputActions;
     public float launchSpeed;
     public Vector3 spawnPoint;
@@ -92,6 +93,8 @@ public class debug : MonoBehaviour
     public void PressSpace(InputAction.CallbackContext context) {
             
             if (context.performed) {
+                ballScript.playerLastTouched = false;
+                ballScript.playerLastZone = false;
                 resetBall = true;
             }
             
@@ -101,6 +104,8 @@ public class debug : MonoBehaviour
             if (context.performed) {
 
                 Debug.Log("a pressed");
+                ballScript.playerLastTouched = false;
+                ballScript.playerLastZone = false;
                 resetBall = true;
                 //Time.timeScale = 0.5f;
             }

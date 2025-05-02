@@ -11,6 +11,10 @@ public class ball : MonoBehaviour
 
     public bool playerLastTouched;
 
+    public float doubleBounceBuffer;
+
+    public float doubleBounceTime;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -20,7 +24,9 @@ public class ball : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (doubleBounceBuffer >= 0){
+            doubleBounceBuffer -= Time.deltaTime;
+        }
     }
 
     void OnTriggerEnter(Collider zone){
@@ -42,21 +48,23 @@ public class ball : MonoBehaviour
         }
     }
     public void TriggerPlayerZone(){
-        if(playerLastZone){
+        if(playerLastZone && doubleBounceBuffer <=0){
             //Debug.Log("Player gets point");
             EndRound();
         }
-        else{
+        if (!playerLastZone) {
             playerLastZone = true;
+            doubleBounceBuffer = doubleBounceTime;
         }
     }
     public void TriggerOpponentZone(){
-        if(!playerLastZone){
+        if(!playerLastZone && doubleBounceBuffer <=0){
             //Debug.Log("Opponent gets point");
             EndRound();
         }
-        else{
+        if (playerLastZone) {
             playerLastZone = false;
+            doubleBounceBuffer = doubleBounceTime;
         }
     }
     public void TriggerPlayerNetZone(){
@@ -88,6 +96,7 @@ public class ball : MonoBehaviour
         EndRound();
     }
     public void EndRound(){
+        Debug.Log("Round ended");
         playerLastTouched = false;
         playerLastZone = false;
         debugScript.resetBall = true;

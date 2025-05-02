@@ -45,7 +45,7 @@ public class time : MonoBehaviour
     void Update()
     {   
 
-        Debug.Log(timeState);
+        //Debug.Log(timeState);
 
         // go until slow
         if ((timeState == "normal") && (bufferTimer <= 0f && bufferTimer > -50f)) {
