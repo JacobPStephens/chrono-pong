@@ -122,7 +122,7 @@ public class time : MonoBehaviour
             if (state.Count > 0) {
                 mostRecentState = state.Last.Value;
                 state.RemoveLast();
-                ball.transform.position = mostRecentState.Item1;
+                ball.transform.position = Vector3.Lerp(ball.transform.position, mostRecentState.Item1, 100*Time.deltaTime);
             }
 
             //Debug.DrawLine(transform.position, transform.position + mostRecentState.Item2);

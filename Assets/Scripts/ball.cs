@@ -7,9 +7,13 @@ public class ball : MonoBehaviour
 
     public debug debugScript;
 
+    public time timeScript;
+
     public bool playerLastZone;
 
     public bool playerLastTouched;
+
+    public bool round_ended;
 
     public float doubleBounceBuffer;
 
@@ -27,6 +31,12 @@ public class ball : MonoBehaviour
         if (doubleBounceBuffer >= 0){
             doubleBounceBuffer -= Time.deltaTime;
         }
+        if(round_ended){
+            playerLastTouched = false;
+            playerLastZone = false;
+            timeScript.state = new LinkedList<(Vector3, Vector3)>();
+            round_ended = false;
+        }
     }
 
     void OnTriggerEnter(Collider zone){
@@ -35,6 +45,7 @@ public class ball : MonoBehaviour
             OutOfBoundsZone();
         }
         if(zone.gameObject.name == "player_table_zone"){
+            Debug.Log(playerLastZone);
             TriggerPlayerZone();
         }
         if(zone.gameObject.name == "opponent_table_zone"){
@@ -48,8 +59,9 @@ public class ball : MonoBehaviour
         }
     }
     public void TriggerPlayerZone(){
-        if(playerLastZone && doubleBounceBuffer <=0){
-            //Debug.Log("Player gets point");
+        if(playerLastZone && doubleBounceBuffer <=0 || playerLastTouched){
+            //Debug.Log("Opponent gets point");
+            //Debug.Log("In Trigger");
             EndRound();
         }
         if (!playerLastZone) {
@@ -59,7 +71,7 @@ public class ball : MonoBehaviour
     }
     public void TriggerOpponentZone(){
         if(!playerLastZone && doubleBounceBuffer <=0){
-            //Debug.Log("Opponent gets point");
+            //Debug.Log("Player gets point");
             EndRound();
         }
         if (playerLastZone) {
@@ -96,9 +108,9 @@ public class ball : MonoBehaviour
         EndRound();
     }
     public void EndRound(){
-        Debug.Log("Round ended");
-        playerLastTouched = false;
-        playerLastZone = false;
+        //Debug.Log("Round ended");
         debugScript.resetBall = true;
+        round_ended = true;
+        //Debug.Log(playerLastZone);
     }
 }

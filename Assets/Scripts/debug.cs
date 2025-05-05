@@ -37,26 +37,7 @@ public class debug : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        // if ball needs to be reset, start reset ball corutine and set reset ball to false
-
-
-
-
-        // Debug.Log("LeftControllerPosition" + leftController.transform.position);
-        // Debug.Log("RightControllerPosition" + rightController.transform.position);
-
-        // inputActions.
-        // Debug.Log(inputActions);
-        // var action = inputActions.actions[0];
-        
-        // action.performed += context => Debug.Log("performed");
-        // if (Input.GetKeyDown(KeyCode.B)) {
-        //     ballRb.velocity = new Vector3(0, 4f, 0f);
-        // }
-        // updated
-
-        //Debug.Log(ballRb.velocity);
+        // Debug.Log(rightController.transform.position);
     }
 
 
@@ -103,7 +84,7 @@ public class debug : MonoBehaviour
                 
             if (context.performed) {
 
-                Debug.Log("a pressed");
+                //Debug.Log("a pressed");
                 ballScript.playerLastTouched = false;
                 ballScript.playerLastZone = false;
                 resetBall = true;

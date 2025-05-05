@@ -40,6 +40,7 @@ public class rightPaddle : MonoBehaviour
         }
         if (ballHit) {
             HitBall(ball, velocity);
+            ballScript.playerLastTouched = true;
             ballHit = false;
         }
 
