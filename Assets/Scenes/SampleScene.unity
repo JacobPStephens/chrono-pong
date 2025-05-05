@@ -2633,8 +2633,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debugScript: {fileID: 1447033737}
+  timeScript: {fileID: 1447033739}
   playerLastZone: 0
   playerLastTouched: 0
+  round_ended: 0
   doubleBounceBuffer: 0
   doubleBounceTime: 0.4
 --- !u!1 &1855398764
