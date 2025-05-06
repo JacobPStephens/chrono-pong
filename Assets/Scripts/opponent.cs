@@ -13,6 +13,7 @@ public class opponent : MonoBehaviour
 
     public ball ballScript;
 
+    public face faceScript;
     // Start is called before the first frame update
     void Start()
     {   
@@ -53,6 +54,8 @@ public class opponent : MonoBehaviour
         returnBall = true;
         returnVelocity = velocity;
         ballScript.playerLastTouched = false;
+
+        StartCoroutine(faceScript.HitBall());
         //Debug.Log("Changed velocity to " + velocity);//;+ " Actual Velocity " + ballRb.velocity);
 
     }
@@ -62,10 +65,10 @@ public class opponent : MonoBehaviour
                 
     }
     private Vector3 GetRandomTarget() {
-        float backEdge = 2.66f;
+        float backEdge = 2.80f;
         float leftEdge = -0.4f;
         float rightEdge = 0.2f;
-        float frontEdge = 2.00f;
+        float frontEdge = 2.46f;
         return new Vector3(Random.Range(leftEdge, rightEdge), 1f, Random.Range(frontEdge, backEdge));
     }
     public float GetRandomShotAngle() {

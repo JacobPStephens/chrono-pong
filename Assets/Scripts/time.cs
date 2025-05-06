@@ -49,7 +49,7 @@ public class time : MonoBehaviour
 
         // go until slow
         if ((timeState == "normal") && (bufferTimer <= 0f && bufferTimer > -50f)) {
-            ChangeTimeScale(0.5f);
+            ChangeTimeScale(0.35f);
             timeState = "slow";
         }
         if (timeState == "rewind" && rewindTimer <= 0f) {
