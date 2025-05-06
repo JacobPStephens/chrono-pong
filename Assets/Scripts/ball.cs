@@ -64,7 +64,7 @@ public class ball : MonoBehaviour
     }
     public void TriggerPlayerZone(){
         if(playerLastZone && doubleBounceBuffer <=0 || playerLastTouched){
-            //opponentScript.HandlePlayerLost();
+            opponentScript.HandlePlayerLost();
             EndRound();
         }
         if (!playerLastZone) {
@@ -83,7 +83,7 @@ public class ball : MonoBehaviour
         }
     }
     public void TriggerPlayerNetZone(){
-        //opponentScript.HandlePlayerLost();
+        opponentScript.HandlePlayerLost();
         EndRound();
     }
     public void TriggerOpponentNetZone(){
@@ -93,7 +93,7 @@ public class ball : MonoBehaviour
     public void OutOfBoundsZone(){
         if(playerLastTouched == playerLastZone){
             if(playerLastTouched){
-                //opponentScript.HandlePlayerLost();
+                opponentScript.HandlePlayerLost();
                 EndRound();            
             }
             else{
@@ -105,7 +105,7 @@ public class ball : MonoBehaviour
                 //Debug.Log("Player gets point");
             }
             else{
-                //opponentScript.HandlePlayerLost();
+                opponentScript.HandlePlayerLost();
                 EndRound();
             }
         }

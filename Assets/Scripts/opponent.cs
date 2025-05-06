@@ -26,13 +26,19 @@ public class opponent : MonoBehaviour
     public Bot currentBot;
 
     // Start is called before the first frame update
-    void Start()
-    {   
+    void Awake() {
         bot1 = new Bot(0,3,.10f);
         bot2 = new Bot(1,5,.08f);
         bot3 = new Bot(2,10,.05f);
-        Bot[] botArray = {bot1,bot2,bot3};
+        botArray[0] = bot1;
+        botArray[1] = bot2;
+        botArray[2] = bot3;
+        //Debug.Log(botArray[0].get_level());
         currentBot = bot1;
+    }
+    
+    void Start()
+    {   
     }
 
     // Update is called once per frame
@@ -120,32 +126,32 @@ public class opponent : MonoBehaviour
         if(ballScript.playerLastZone){
             ballScript.EndRound();
         }
-        ReturnBall(ball);
+        //ReturnBall(ball);
 
-    //     missChance = Random.Range(0f,1f);
+        missChance = Random.Range(0f,1f);
 
-    //     if (hitCounter <= currentBot.get_grace() || missChance > currentBot.get_miss()){
-    //         ReturnBall(ball);
-    //     }
-    //     else {
-    //         lives -= 1;
-    //         if (lives == 0) {
-    //             if (currentBot.get_level() != 2) {
-    //                 currentBot = botArray[currentBot.get_level()+1];
-    //                 hitCounter = 0;
-    //                 Debug.Log("You have advanced to level"+currentBot.get_level());
-    //             }
-    //             else {
-    //                 Debug.Log("You win");
-    //             }            
-    //         }
-    //     }
-    // }
+        if (hitCounter <= currentBot.get_grace() || missChance > currentBot.get_miss()){
+            ReturnBall(ball);
+        }
+        else {
+            lives -= 1;
+            if (lives == 0) {
+                if (currentBot.get_level() != 2) {
+                    currentBot = botArray[currentBot.get_level()+1];
+                    hitCounter = 0;
+                    Debug.Log("You have advanced to level"+currentBot.get_level());
+                }
+                else {
+                    Debug.Log("You win");
+                }            
+            }
+        }
+    }
 
-    // public void HandlePlayerLost(){
-    //     currentBot = botArray[0];
-    //     Debug.Log("You Lost Bozo");
-    //     Debug.Log(currentBot);
+    public void HandlePlayerLost(){
+        currentBot = botArray[0];
+        Debug.Log("You Lost Bozo");
+        //Debug.Log(currentBot);
     }
 }
 
