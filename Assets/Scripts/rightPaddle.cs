@@ -37,7 +37,7 @@ public class rightPaddle : MonoBehaviour
         // else {
         //     Vector3 velocity = (parent.position - previousPosition) / Time.fixedDeltaTime;
         // }
-        Vector3 velocity = (parent.position - previousPosition) / (Time.fixedDeltaTime*Time.timeScale);
+        Vector3 velocity = ((parent.position - previousPosition) / Time.fixedDeltaTime) * Time.timeScale;
         previousPosition = parent.position;
 
         if (nextFrame) {
