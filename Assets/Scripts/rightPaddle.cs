@@ -49,7 +49,6 @@ public class rightPaddle : MonoBehaviour
         }
         if (ballHit) {
             HitBall(ball, velocity);
-            ballScript.playerLastTouched = true;
             ballHit = false;
         }
 
@@ -68,6 +67,7 @@ public class rightPaddle : MonoBehaviour
         Debug.Log("HIT BALL. PADDLE VELOCITY = " + paddleVelocity);
         ballRb.AddForce(paddleVelocity, ForceMode.Impulse);
         ballScript.playerLastTouched = true;
+        ballScript.playerLastZone = true;
         nextFrame = true;
         //debugTimer = debugTime;
 
