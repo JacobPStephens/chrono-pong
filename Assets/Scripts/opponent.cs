@@ -98,6 +98,10 @@ public class opponent : MonoBehaviour
 
         ball = other.gameObject;
 
+        if(ballScript.playerLastZone){
+            ballScript.EndRound();
+        }
+
         ReturnBall(ball);
     }
 }

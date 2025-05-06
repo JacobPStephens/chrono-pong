@@ -14,9 +14,12 @@ public class rightPaddle : MonoBehaviour
     public float debugTimer;
     public float debugTime;
     public bool nextFrame;
+    public Vector3 velocity;
     public GameObject ball;
 
     public ball ballScript;
+
+    public time timeScript;
 
     // Start is called before the first frame update
     void Start()
@@ -28,7 +31,13 @@ public class rightPaddle : MonoBehaviour
 
     void FixedUpdate() {
         Rigidbody ballRb = ball.GetComponent<Rigidbody>();
-        Vector3 velocity = (parent.position - previousPosition) / Time.fixedDeltaTime;
+        // if (timeScript.timeState == "slow") {
+        //     Vector3 velocity = (parent.position - previousPosition) / (Time.fixedDeltaTime/Time.timeScale);
+        // }
+        // else {
+        //     Vector3 velocity = (parent.position - previousPosition) / Time.fixedDeltaTime;
+        // }
+        Vector3 velocity = (parent.position - previousPosition) / (Time.fixedDeltaTime*Time.timeScale);
         previousPosition = parent.position;
 
         if (nextFrame) {

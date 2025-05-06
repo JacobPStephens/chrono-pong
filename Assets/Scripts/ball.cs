@@ -35,6 +35,7 @@ public class ball : MonoBehaviour
             playerLastTouched = false;
             playerLastZone = false;
             timeScript.state = new LinkedList<(Vector3, Vector3)>();
+            timeScript.state.AddLast((debugScript.spawnPoint, Vector3.forward*debugScript.launchSpeed));
             round_ended = false;
         }
     }
@@ -45,7 +46,7 @@ public class ball : MonoBehaviour
             OutOfBoundsZone();
         }
         if(zone.gameObject.name == "player_table_zone"){
-            Debug.Log(playerLastZone);
+            //Debug.Log(playerLastZone);
             TriggerPlayerZone();
         }
         if(zone.gameObject.name == "opponent_table_zone"){

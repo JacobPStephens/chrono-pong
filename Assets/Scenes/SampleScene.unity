@@ -2344,7 +2344,6 @@ GameObject:
   - component: {fileID: 1684881434}
   - component: {fileID: 1684881438}
   - component: {fileID: 1684881432}
-  - component: {fileID: 1684881430}
   - component: {fileID: 1684881435}
   - component: {fileID: 1684881437}
   m_Layer: 0
@@ -2354,28 +2353,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1684881430
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1684881429}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe463fb4a69c67d46a23ce7e9ed2053c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rightController: {fileID: 0}
-  previousPosition: {x: 0, y: 0, z: 0}
-  ballHit: 0
-  parent: {fileID: 0}
-  recentMax: 0
-  debugTimer: 0
-  debugTime: 0
-  nextFrame: 0
-  ball: {fileID: 1718148861}
-  ballScript: {fileID: 1718148867}
 --- !u!23 &1684881432
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -2476,8 +2453,10 @@ MonoBehaviour:
   debugTimer: 0
   debugTime: 4
   nextFrame: 0
+  velocity: {x: 0, y: 0, z: 0}
   ball: {fileID: 1718148861}
   ballScript: {fileID: 1718148867}
+  timeScript: {fileID: 1447033739}
 --- !u!33 &1684881438
 MeshFilter:
   m_ObjectHideFlags: 0
