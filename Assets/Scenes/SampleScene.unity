@@ -5190,6 +5190,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   returnBall: 0
+  hitCounter: 0
+  lives: 3
+  missChance: 0
   returnVelocity: {x: 0, y: 0, z: 0}
   ball: {fileID: 1718148861}
   target: {fileID: 1928547706}
@@ -18050,6 +18053,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   debugScript: {fileID: 1447033737}
   timeScript: {fileID: 1447033739}
+  opponentScript: {fileID: 381289444}
   playerLastZone: 0
   playerLastTouched: 0
   round_ended: 0

@@ -6,6 +6,9 @@ public class opponent : MonoBehaviour
 {
 
     public bool returnBall;
+    public int hitCounter;
+    public int lives;
+    public float missChance;
     public Vector3 returnVelocity;
     public GameObject ball; 
 
@@ -14,11 +17,22 @@ public class opponent : MonoBehaviour
     public ball ballScript;
 
     public face faceScript;
+    private Bot bot1;
+    private Bot bot2;
+    private Bot bot3;
+
+    public Bot[] botArray = new Bot[3]; 
+
+    public Bot currentBot;
+
     // Start is called before the first frame update
     void Start()
     {   
-
-
+        bot1 = new Bot(0,3,.10f);
+        bot2 = new Bot(1,5,.08f);
+        bot3 = new Bot(2,10,.05f);
+        Bot[] botArray = {bot1,bot2,bot3};
+        currentBot = bot1;
     }
 
     // Update is called once per frame
@@ -40,6 +54,8 @@ public class opponent : MonoBehaviour
     }
 
     public void ReturnBall(GameObject ball) {
+
+        hitCounter++;
 
         Rigidbody ballRb = ball.GetComponent<Rigidbody>(); 
         Vector3 targetPos = GetRandomTarget();
@@ -104,7 +120,47 @@ public class opponent : MonoBehaviour
         if(ballScript.playerLastZone){
             ballScript.EndRound();
         }
-
         ReturnBall(ball);
+
+    //     missChance = Random.Range(0f,1f);
+
+    //     if (hitCounter <= currentBot.get_grace() || missChance > currentBot.get_miss()){
+    //         ReturnBall(ball);
+    //     }
+    //     else {
+    //         lives -= 1;
+    //         if (lives == 0) {
+    //             if (currentBot.get_level() != 2) {
+    //                 currentBot = botArray[currentBot.get_level()+1];
+    //                 hitCounter = 0;
+    //                 Debug.Log("You have advanced to level"+currentBot.get_level());
+    //             }
+    //             else {
+    //                 Debug.Log("You win");
+    //             }            
+    //         }
+    //     }
+    // }
+
+    // public void HandlePlayerLost(){
+    //     currentBot = botArray[0];
+    //     Debug.Log("You Lost Bozo");
+    //     Debug.Log(currentBot);
+    }
+}
+
+public class Bot{
+    private int _level;
+    private int _grace;
+    private float _miss;
+    
+    public int get_level(){return _level;}
+    public int get_grace(){return _grace;}
+    public float get_miss(){return _miss;}
+
+    public Bot (int level, int grace, float miss) {
+        _level = level;
+        _grace = grace; 
+        _miss = miss;
     }
 }

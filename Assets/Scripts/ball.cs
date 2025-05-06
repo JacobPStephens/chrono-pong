@@ -9,6 +9,8 @@ public class ball : MonoBehaviour
 
     public time timeScript;
 
+    public opponent opponentScript;
+
     public bool playerLastZone;
 
     public bool playerLastTouched;
@@ -34,6 +36,7 @@ public class ball : MonoBehaviour
         if(round_ended){
             playerLastTouched = false;
             playerLastZone = false;
+            opponentScript.hitCounter = 0;
             timeScript.state = new LinkedList<(Vector3, Vector3)>();
             timeScript.state.AddLast((debugScript.spawnPoint, Vector3.forward*debugScript.launchSpeed));
             round_ended = false;
@@ -61,8 +64,7 @@ public class ball : MonoBehaviour
     }
     public void TriggerPlayerZone(){
         if(playerLastZone && doubleBounceBuffer <=0 || playerLastTouched){
-            //Debug.Log("Opponent gets point");
-            //Debug.Log("In Trigger");
+            //opponentScript.HandlePlayerLost();
             EndRound();
         }
         if (!playerLastZone) {
@@ -81,7 +83,7 @@ public class ball : MonoBehaviour
         }
     }
     public void TriggerPlayerNetZone(){
-        //Debug.Log("Opponent gets point");
+        //opponentScript.HandlePlayerLost();
         EndRound();
     }
     public void TriggerOpponentNetZone(){
@@ -91,7 +93,8 @@ public class ball : MonoBehaviour
     public void OutOfBoundsZone(){
         if(playerLastTouched == playerLastZone){
             if(playerLastTouched){
-                //Debug.Log("Opponent gets point");
+                //opponentScript.HandlePlayerLost();
+                EndRound();            
             }
             else{
                 //Debug.Log("Player gets point");
@@ -102,7 +105,8 @@ public class ball : MonoBehaviour
                 //Debug.Log("Player gets point");
             }
             else{
-                //Debug.Log("Opponent gets point");
+                //opponentScript.HandlePlayerLost();
+                EndRound();
             }
         }
 
