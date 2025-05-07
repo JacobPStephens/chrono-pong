@@ -47,7 +47,7 @@ public class timeTest : MonoBehaviour
             timeState = "slow";
         }
         if (timeState == "rewind" && rewindTimer <= 0f) {
-            Debug.Log("Stop rewind debug");
+            //Debug.Log("Stop rewind debug");
             StopRewind();
         }
 
@@ -150,7 +150,7 @@ public class timeTest : MonoBehaviour
 
         rb.velocity = mostRecentState.Item2;    
         state.RemoveLast();
-        Debug.Log("Stop rewind debug.");
+        //Debug.Log("Stop rewind debug.");
     }
     void UpdateDebugTask() {
         GameObject txtObj = GameObject.FindGameObjectWithTag("text");

@@ -21,7 +21,7 @@ public class face : MonoBehaviour
     }
 
     public IEnumerator HitBall() {
-        Debug.Log("Switching face.");
+        //Debug.Log("Switching face.");
         sr.sprite = faces[1];
         yield return new WaitForSeconds(0.5f);
         sr.sprite = faces[0];

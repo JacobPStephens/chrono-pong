@@ -37,11 +37,11 @@ public class rightPaddle : MonoBehaviour
         // else {
         //     Vector3 velocity = (parent.position - previousPosition) / Time.fixedDeltaTime;
         // }
-        Vector3 velocity = ((parent.position - previousPosition) / Time.fixedDeltaTime) * Time.timeScale;
+        Vector3 velocity = ((parent.position - previousPosition) / Time.fixedDeltaTime) * .5f;
         previousPosition = parent.position;
 
         if (nextFrame) {
-            Debug.Log(ballRb.velocity);
+            //Debug.Log(ballRb.velocity);
             // if (ballRb.velocity.z > 0) {
             //     ballRb.velocity = new Vector3(ballRb.velocity.x, ballRb.velocity.y, -ballRb.velocity.z);
             // }
@@ -63,8 +63,8 @@ public class rightPaddle : MonoBehaviour
         //ballRb.velocity = new Vector3(ballRb.velocity.x, ballRb.velocity.y, 0f);
        // Vector3 newVelocity = new Vector3(ballRb.velocity.x + paddleVelocity.x, ballRb.velocity.y + paddleVelocity.y, ballRb.velocity.z + paddleVelocity.z);
 
-        Debug.Log("HIT BALL. PREVIOUS BALL VELOCITY = " + ballRb.velocity);
-        Debug.Log("HIT BALL. PADDLE VELOCITY = " + paddleVelocity);
+        //Debug.Log("HIT BALL. PREVIOUS BALL VELOCITY = " + ballRb.velocity);
+        //Debug.Log("HIT BALL. PADDLE VELOCITY = " + paddleVelocity);
         ballRb.AddForce(paddleVelocity, ForceMode.Impulse);
         ballScript.playerLastTouched = true;
         ballScript.playerLastZone = true;

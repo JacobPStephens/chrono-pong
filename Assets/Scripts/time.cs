@@ -53,7 +53,7 @@ public class time : MonoBehaviour
             timeState = "slow";
         }
         if (timeState == "rewind" && rewindTimer <= 0f) {
-            Debug.Log("Stop rewind debug");
+            //Debug.Log("Stop rewind debug");
             StopRewind();
         }
 
@@ -77,8 +77,6 @@ public class time : MonoBehaviour
     void HandleMeterUI() {
         float meterPercent = meter / maxMeter;
         meterUI.transform.localScale = new Vector3(0.99f*meterPercent, 1.1f, 0.99f*meterPercent);
-
-
     }
     void Record() {
         state.AddLast((ball.transform.position, ballRb.velocity));
@@ -116,7 +114,7 @@ public class time : MonoBehaviour
 
     IEnumerator Playback() {
 
-        Debug.Log("inside rewind");
+        //Debug.Log("inside rewind");
         while (timeState == "rewind") {
 
             if (state.Count > 0) {
@@ -126,7 +124,7 @@ public class time : MonoBehaviour
             }
 
             //Debug.DrawLine(transform.position, transform.position + mostRecentState.Item2);
-            Debug.Log("rewinding...");
+            //Debug.Log("rewinding...");
             yield return new WaitForSeconds(playbackInterval);
         }
 
@@ -138,7 +136,7 @@ public class time : MonoBehaviour
         rewindTimer = rewindTime;
         StartCoroutine(Playback());
         ballRb.isKinematic = true;
-        Debug.Log("Start rewind.");
+        //Debug.Log("Start rewind.");
     }
     void StopRewind() {
 
@@ -147,7 +145,7 @@ public class time : MonoBehaviour
 
         ballRb.velocity = mostRecentState.Item2;    
         state.RemoveLast();
-        Debug.Log("Stop rewind debug.");
+        //Debug.Log("Stop rewind debug.");
     }
 
 
@@ -179,19 +177,19 @@ public class time : MonoBehaviour
     public void PressSpace(InputAction.CallbackContext context) {
         
         if (context.performed) {
-            Debug.Log("Space pressed.");
+            //Debug.Log("Space pressed.");
             reset = true;
         }
 
         if (context.canceled) {
-            Debug.Log("Space context canceled.");
+            //Debug.Log("Space context canceled.");
         }
         
     }
 
     void OnPress() {
 
-        Debug.Log("Action pressed");
+        //Debug.Log("Action pressed");
     
         if (bufferTimer > 0f) {
             if (meter >= 0.95f * maxMeter){
