@@ -68,6 +68,8 @@ public class opponent : MonoBehaviour
         Rigidbody ballRb = ball.GetComponent<Rigidbody>(); 
         Vector3 targetPos = GetRandomTarget();
         float shotAngle = GetRandomShotAngle();
+        ball.transform.position = GetRandomPosition();
+
         target.transform.position = targetPos;
 
         //Debug.Log("Launching ball at target " +targetPos+ " with shot angle " +shotAngle);
@@ -84,6 +86,10 @@ public class opponent : MonoBehaviour
 
     }
 
+    public Vector3 GetRandomPosition() {
+        return new Vector3(Random.Range(-0.5f,0.5f), 1.4f, ball.transform.position.z);
+    }
+
     private void StopBall(Rigidbody ballRb) {
         ballRb.velocity = Vector3.zero;
                 
@@ -96,7 +102,7 @@ public class opponent : MonoBehaviour
         return new Vector3(Random.Range(leftEdge, rightEdge), 1f, Random.Range(frontEdge, backEdge));
     }
     public float GetRandomShotAngle() {
-        return Random.Range(45f, 50f);
+        return Random.Range(40f, 41f);
     }
     public Vector3 GetVelocityGivenAngle(Vector3 currentPosition, Vector3 targetPosition, float verticalDegrees) {
         float radians = verticalDegrees * Mathf.Deg2Rad;

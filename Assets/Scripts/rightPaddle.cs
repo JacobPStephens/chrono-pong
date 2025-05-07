@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class rightPaddle : MonoBehaviour
 {
 
@@ -16,10 +17,12 @@ public class rightPaddle : MonoBehaviour
     public bool nextFrame;
     public Vector3 velocity;
     public GameObject ball;
+    //public ActionBasedController xrRight;
 
     public ball ballScript;
 
     public time timeScript;
+    public Queue<Vector3> lastVelocities = new Queue<Vector3>();
 
     // Start is called before the first frame update
     void Start()
@@ -40,6 +43,12 @@ public class rightPaddle : MonoBehaviour
         Vector3 velocity = ((parent.position - previousPosition) / Time.fixedDeltaTime) * Time.timeScale;
         previousPosition = parent.position;
 
+        //Debug.Log(lastVelocities);
+        lastVelocities.Enqueue(velocity);
+        if (lastVelocities.Count > 3) {
+            lastVelocities.Dequeue();
+        }
+
         if (nextFrame) {
             //Debug.Log(ballRb.velocity);
             // if (ballRb.velocity.z > 0) {
@@ -48,7 +57,9 @@ public class rightPaddle : MonoBehaviour
             nextFrame = false;
         }
         if (ballHit) {
-            HitBall(ball, velocity);
+            Debug.Log("BALL HIT");
+            HitBall(ball, QueueAverage(lastVelocities));
+            //HitBall(ball, velocity);
             ballHit = false;
         }
 
@@ -58,6 +69,22 @@ public class rightPaddle : MonoBehaviour
 
     }
 
+    private Vector3 QueueAverage(Queue<Vector3> q) {
+        
+        Debug.Log("IN QUEUE AVG FUNCTION....");
+
+        Vector3[] tmpArr = q.ToArray();
+        Vector3 total = Vector3.zero;
+        for (int i = 0; i < q.Count; i++) {
+            total += tmpArr[i];
+        }
+        Debug.Log(tmpArr);
+        Debug.Log("Average is " + total / q.Count);
+        Debug.Log("Last frame velocity is " + tmpArr[tmpArr.Length-1]);
+
+        return (total / q.Count);
+    }
+
     void HitBall(GameObject ball, Vector3 paddleVelocity) {
         Rigidbody ballRb = ball.GetComponent<Rigidbody>();
         //ballRb.velocity = new Vector3(ballRb.velocity.x, ballRb.velocity.y, 0f);
@@ -65,6 +92,7 @@ public class rightPaddle : MonoBehaviour
 
         //Debug.Log("HIT BALL. PREVIOUS BALL VELOCITY = " + ballRb.velocity);
         //Debug.Log("HIT BALL. PADDLE VELOCITY = " + paddleVelocity);
+        //TriggerHaptic();
         ballRb.AddForce(paddleVelocity, ForceMode.Impulse);
         ballScript.playerLastTouched = true;
         ballScript.playerLastZone = true;
@@ -74,20 +102,38 @@ public class rightPaddle : MonoBehaviour
 
     }
 
+    // public void TriggerHaptic() {
+    //     // xrRight = (XRController) GameObject.FindObjectOfType(typeof(XRController));
+    //     xrRight = rightController.GetComponent<XRController>();
+    //     xrRight.SendHapticImpulse(1f,1f);
+    // }
+
     void OnCollisionEnter(Collision col) {
         //Debug.Log("paddle collided with " + col.gameObject.name);
 
         if (col.gameObject.name == "ball") {
             ballHit = true;
+
+            StartCoroutine(DisableCollider());
+            
         }
 
         
 
     }
+
+    IEnumerator DisableCollider() {
+
+        GetComponent<BoxCollider>().isTrigger = true;
+        yield return new WaitForSeconds(0.5f);
+        GetComponent<BoxCollider>().isTrigger = false;
+
+
+    }
     // Update is called once per frame
     void Update()
     {
-        // transform.position = rightController.transform.position;
-        // transform.rotation = rightController.transform.rotation;
+        transform.position = rightController.transform.position;
+        transform.rotation = rightController.transform.rotation * Quaternion.Euler(0f,173f,90f);
     }
 }

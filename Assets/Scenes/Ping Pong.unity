@@ -5296,12 +5296,12 @@ GameObject:
   - component: {fileID: 400911792}
   - component: {fileID: 400911795}
   m_Layer: 0
-  m_Name: rightPaddle
+  m_Name: leftPaddle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &400911790
 Transform:
   m_ObjectHideFlags: 0
@@ -5312,12 +5312,12 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0.67437977, y: 0.67437977, z: -0.21263108, w: 0.21263108}
   m_LocalPosition: {x: 0, y: 0.09000003, z: 0.059999943}
-  m_LocalScale: {x: 0.16, y: 0.006666667, z: 0.19999997}
+  m_LocalScale: {x: 0.15999997, y: 0.0066666673, z: 0.19999997}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1005450374}
   - {fileID: 14550193}
-  m_Father: {fileID: 1087150217}
+  m_Father: {fileID: 1646568610}
   m_LocalEulerAnglesHint: {x: 35, y: 180, z: 90}
 --- !u!65 &400911792
 BoxCollider:
@@ -5338,7 +5338,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.2, y: 30, z: 1.2}
+  m_Size: {x: 2, y: 30, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &400911793
 MeshRenderer:
@@ -5402,7 +5402,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe463fb4a69c67d46a23ce7e9ed2053c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rightController: {fileID: 1087150213}
+  rightController: {fileID: 1646568606}
   previousPosition: {x: 0, y: 0, z: 0}
   ballHit: 0
   parent: {fileID: 0}
@@ -5852,7 +5852,7 @@ Transform:
   m_GameObject: {fileID: 549100447}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 2.66}
+  m_LocalPosition: {x: -0.02, y: 1.402, z: -0.624}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5992,10 +5992,10 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0.9063079, y: -0, z: -0, w: 0.42261827}
   m_LocalPosition: {x: 0, y: 0, z: -0.059999943}
-  m_LocalScale: {x: 0.02, y: 0.05000001, z: 0.02}
+  m_LocalScale: {x: 0.02, y: 0.050000012, z: 0.02}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1087150217}
+  m_Father: {fileID: 1646568610}
   m_LocalEulerAnglesHint: {x: -130, y: 0, z: 0}
 --- !u!136 &725047663
 CapsuleCollider:
@@ -16166,10 +16166,55 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3385890772825029785, guid: 895f6f3c2d334633b5800312285058d2,
+        type: 3}
+      propertyPath: m_HoverEntered.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3385890772825029785, guid: 895f6f3c2d334633b5800312285058d2,
+        type: 3}
+      propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3385890772825029785, guid: 895f6f3c2d334633b5800312285058d2,
+        type: 3}
+      propertyPath: m_HoverEntered.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3385890772825029785, guid: 895f6f3c2d334633b5800312285058d2,
+        type: 3}
+      propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3385890772825029785, guid: 895f6f3c2d334633b5800312285058d2,
+        type: 3}
+      propertyPath: m_HoverEntered.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1684881429}
+    - target: {fileID: 3385890772825029785, guid: 895f6f3c2d334633b5800312285058d2,
+        type: 3}
+      propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1684881429}
+    - target: {fileID: 3385890772825029785, guid: 895f6f3c2d334633b5800312285058d2,
+        type: 3}
+      propertyPath: m_HoverEntered.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3385890772825029785, guid: 895f6f3c2d334633b5800312285058d2,
+        type: 3}
+      propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3415145736139425353, guid: 895f6f3c2d334633b5800312285058d2,
         type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3711799367079663623, guid: 895f6f3c2d334633b5800312285058d2,
+        type: 3}
+      propertyPath: m_UIScrollingEnabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4134505312059479865, guid: 895f6f3c2d334633b5800312285058d2,
         type: 3}
@@ -16224,6 +16269,11 @@ PrefabInstance:
     - target: {fileID: 4134505312059479865, guid: 895f6f3c2d334633b5800312285058d2,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6454594071094758631, guid: 895f6f3c2d334633b5800312285058d2,
+        type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7313654230448209575, guid: 895f6f3c2d334633b5800312285058d2,
@@ -16337,19 +16387,15 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 9014170785475729501, guid: 895f6f3c2d334633b5800312285058d2,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1684881434}
+      addedObject: {fileID: 400911790}
     - targetCorrespondingSourceObject: {fileID: 9014170785475729501, guid: 895f6f3c2d334633b5800312285058d2,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1362926415}
-    - targetCorrespondingSourceObject: {fileID: 9014170783705847996, guid: 895f6f3c2d334633b5800312285058d2,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 400911790}
-    - targetCorrespondingSourceObject: {fileID: 9014170783705847996, guid: 895f6f3c2d334633b5800312285058d2,
-        type: 3}
-      insertIndex: -1
       addedObject: {fileID: 725047662}
+    - targetCorrespondingSourceObject: {fileID: 9014170783705847996, guid: 895f6f3c2d334633b5800312285058d2,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1684881434}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 7313654230448209575, guid: 895f6f3c2d334633b5800312285058d2,
         type: 3}
@@ -16946,12 +16992,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1362926414}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.9063079, y: -0, z: -0, w: 0.42261827}
-  m_LocalPosition: {x: 0, y: 0, z: -0.059999943}
-  m_LocalScale: {x: 0.02, y: 0.050000004, z: 0.02}
+  m_LocalRotation: {x: -0.4777144, y: -0.4777144, z: -0.5213339, w: -0.5213339}
+  m_LocalPosition: {x: -0.030591393, y: 0, z: 0.74960047}
+  m_LocalScale: {x: 3, y: 0.25038046, z: 0.124763116}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1646568610}
+  m_Father: {fileID: 1684881434}
   m_LocalEulerAnglesHint: {x: -130, y: 0, z: 0}
 --- !u!136 &1362926416
 CapsuleCollider:
@@ -18243,8 +18289,10 @@ GameObject:
   - component: {fileID: 1684881432}
   - component: {fileID: 1684881435}
   - component: {fileID: 1684881437}
+  - component: {fileID: 1684881439}
+  - component: {fileID: 1684881440}
   m_Layer: 0
-  m_Name: leftPaddle
+  m_Name: rightPaddle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -18302,12 +18350,13 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0.67437977, y: 0.67437977, z: -0.21263108, w: 0.21263108}
   m_LocalPosition: {x: 0, y: 0.09000003, z: 0.059999943}
-  m_LocalScale: {x: 0.16, y: 0.0066666664, z: 0.19999997}
+  m_LocalScale: {x: 0.15999997, y: 0.006666667, z: 0.19999997}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 447949820}
   - {fileID: 1940099269}
-  m_Father: {fileID: 1646568610}
+  - {fileID: 1362926415}
+  m_Father: {fileID: 1087150217}
   m_LocalEulerAnglesHint: {x: 35, y: 180, z: 90}
 --- !u!65 &1684881435
 BoxCollider:
@@ -18328,7 +18377,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.2, y: 30, z: 1.2}
+  m_Size: {x: 2, y: 30, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1684881437
 MonoBehaviour:
@@ -18342,7 +18391,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe463fb4a69c67d46a23ce7e9ed2053c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rightController: {fileID: 1646568606}
+  rightController: {fileID: 1087150213}
   previousPosition: {x: 0, y: 0, z: 0}
   ballHit: 0
   parent: {fileID: 0}
@@ -18362,6 +18411,46 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1684881429}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!54 &1684881439
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1684881429}
+  serializedVersion: 4
+  m_Mass: 0.0000001
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 1
+  m_Constraints: 0
+  m_CollisionDetection: 3
+--- !u!114 &1684881440
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1684881429}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57444c075000242ea99e263cee940de2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  manageVisibility: 1
 --- !u!1 &1718148861
 GameObject:
   m_ObjectHideFlags: 0
@@ -18392,8 +18481,8 @@ Rigidbody:
   m_GameObject: {fileID: 1718148861}
   serializedVersion: 4
   m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0
+  m_Drag: 0.08
+  m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
