@@ -5274,7 +5274,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   returnBall: 0
   hitCounter: 0
-  lives: 3
+  lives: 0
+  maxLives: 3
   missChance: 0
   returnVelocity: {x: 0, y: 0, z: 0}
   ball: {fileID: 1718148861}
@@ -5293,7 +5294,7 @@ GameObject:
   - component: {fileID: 400911794}
   - component: {fileID: 400911793}
   - component: {fileID: 400911792}
-  - component: {fileID: 400911791}
+  - component: {fileID: 400911795}
   m_Layer: 0
   m_Name: rightPaddle
   m_TagString: Untagged
@@ -5318,30 +5319,6 @@ Transform:
   - {fileID: 14550193}
   m_Father: {fileID: 1087150217}
   m_LocalEulerAnglesHint: {x: 35, y: 180, z: 0}
---- !u!114 &400911791
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 400911789}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe463fb4a69c67d46a23ce7e9ed2053c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rightController: {fileID: 1087150213}
-  previousPosition: {x: 0, y: 0, z: 0}
-  ballHit: 0
-  parent: {fileID: 0}
-  recentMax: 0
-  debugTimer: 0
-  debugTime: 4
-  nextFrame: 0
-  velocity: {x: 0, y: 0, z: 0}
-  ball: {fileID: 1718148861}
-  ballScript: {fileID: 1718148867}
-  timeScript: {fileID: 1447033739}
 --- !u!65 &400911792
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5413,6 +5390,30 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 400911789}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &400911795
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 400911789}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe463fb4a69c67d46a23ce7e9ed2053c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rightController: {fileID: 1087150213}
+  previousPosition: {x: 0, y: 0, z: 0}
+  ballHit: 0
+  parent: {fileID: 0}
+  recentMax: 0
+  debugTimer: 0
+  debugTime: 4
+  nextFrame: 0
+  velocity: {x: 0, y: 0, z: 0}
+  ball: {fileID: 1718148861}
+  ballScript: {fileID: 1718148867}
+  timeScript: {fileID: 1447033739}
 --- !u!1 &437262249 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 9014170783809206332, guid: 895f6f3c2d334633b5800312285058d2,

@@ -8,6 +8,7 @@ public class opponent : MonoBehaviour
     public bool returnBall;
     public int hitCounter;
     public int lives;
+    public int maxLives;
     public float missChance;
     public Vector3 returnVelocity;
     public GameObject ball; 
@@ -27,14 +28,15 @@ public class opponent : MonoBehaviour
 
     // Start is called before the first frame update
     void Awake() {
-        bot1 = new Bot(0,3,1f);
-        bot2 = new Bot(1,5,1f);
-        bot3 = new Bot(2,10,1f);
+        bot1 = new Bot(0,3,.1f);
+        bot2 = new Bot(1,5,.08f);
+        bot3 = new Bot(2,10,.05f);
         botArray[0] = bot1;
         botArray[1] = bot2;
         botArray[2] = bot3;
         //Debug.Log(botArray[0].get_level());
         currentBot = bot1;
+        lives = maxLives;
     }
     
     void Start()
@@ -134,25 +136,31 @@ public class opponent : MonoBehaviour
             ReturnBall(ball);
         }
         else {
-            lives -= 1;
-            Debug.Log("I have been shot");
-            if (lives == 0) {
-                currentBot = botArray[currentBot.get_level()+1];
-                if (currentBot.get_level() != 3) {
-                    hitCounter = 0;
-                    Debug.Log("You have advanced to level "+currentBot.get_level());
-                }
-                else {
-                    Debug.Log("You win");
-                }            
-            }
+            HandleOpponentLost();
         }
     }
 
     public void HandlePlayerLost(){
         currentBot = botArray[0];
-        //Debug.Log("You Lost Bozo");
+        lives = maxLives;
+        Debug.Log("You Lost Bozo");
         //Debug.Log(currentBot);
+    }
+
+    public void HandleOpponentLost() { 
+        lives -= 1;
+        Debug.Log("I have been shot");
+        if (lives == 0) {
+            currentBot = botArray[currentBot.get_level()+1];
+            if (currentBot.get_level() != 2) {
+                hitCounter = 0;
+                Debug.Log("You have advanced to level "+currentBot.get_level());
+                lives = maxLives;
+            }
+            else {
+                Debug.Log("You win");
+            }            
+        }
     }
 }
 
