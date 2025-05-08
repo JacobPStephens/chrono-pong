@@ -142,7 +142,7 @@ public class opponent : MonoBehaviour
         ball = other.gameObject;
 
         if(ballScript.playerLastZone){
-            ballScript.EndRound();
+            HandlePlayerLost();
         }
         //ReturnBall(ball);
 
@@ -172,8 +172,8 @@ public class opponent : MonoBehaviour
         //Debug.Log("I have been shot");
         //livesText.SetText("Lives "+lives);
         if (lives == 0) {
-            currentBot = botArray[currentBot.get_level()+1];
-            if (currentBot.get_level() != 3) {
+            if (currentBot.get_level()+1 != 3) {
+                currentBot = botArray[currentBot.get_level()+1];
                 hitCounter = 0;
                 //Debug.Log("You have advanced to level "+currentBot.get_level());
                 stageText.SetText("Stage "+currentBot.get_level());

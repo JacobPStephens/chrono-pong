@@ -71,15 +71,15 @@ public class debug : MonoBehaviour
     }
 
     //void FixedUpdate() {
-    public void PressSpace(InputAction.CallbackContext context) {
+    // public void PressSpace(InputAction.CallbackContext context) {
             
-            if (context.performed) {
-                ballScript.playerLastTouched = false;
-                ballScript.playerLastZone = false;
-                resetBall = true;
-            }
+    //         if (context.performed) {
+    //             ballScript.playerLastTouched = false;
+    //             ballScript.playerLastZone = false;
+    //             resetBall = true;
+    //         }
             
-        }
+    //     }
     public void pressA(InputAction.CallbackContext context) {
                 
             if (context.performed) {
