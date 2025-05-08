@@ -21,6 +21,8 @@ public class ball : MonoBehaviour
 
     public float doubleBounceTime;
 
+    public AudioSource[] bounceAudios;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -43,17 +45,24 @@ public class ball : MonoBehaviour
         }
     }
 
+    public void AudioPlayBounce() {
+
+        int i = Random.Range(0, bounceAudios.Length-1);
+        bounceAudios[i].Play();
+
+    }
     void OnTriggerEnter(Collider zone){
-        //Debug.Log(zone.gameObject.name);
         if(zone.gameObject.name == "floor_zone"){
             OutOfBoundsZone();
         }
         if(zone.gameObject.name == "player_table_zone"){
-            //Debug.Log(playerLastZone);
+            AudioPlayBounce();
             TriggerPlayerZone();
         }
         if(zone.gameObject.name == "opponent_table_zone"){
+            AudioPlayBounce();
             TriggerOpponentZone();
+            
         }
         if(zone.gameObject.name == "player_net_zone"){
             TriggerPlayerNetZone();

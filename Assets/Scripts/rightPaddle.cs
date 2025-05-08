@@ -98,6 +98,8 @@ public class rightPaddle : MonoBehaviour
         ballScript.playerLastTouched = true;
         ballScript.playerLastZone = true;
         nextFrame = true;
+
+        ballScript.AudioPlayBounce();
         //debugTimer = debugTime;
 
 
