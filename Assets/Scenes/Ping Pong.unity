@@ -5387,7 +5387,7 @@ MonoBehaviour:
   takeLifeAudio: {fileID: 381289445}
   nextStageAudio: {fileID: 381289446}
   dieAudio: {fileID: 381289447}
-  glow: {fileID: 2100000, guid: ee2efbb817178f0459a848499d2c0ddf, type: 2}
+  aGlow: {fileID: 2100000, guid: ee2efbb817178f0459a848499d2c0ddf, type: 2}
   lightScript: {fileID: 943987047}
 --- !u!82 &381289445
 AudioSource:

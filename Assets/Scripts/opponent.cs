@@ -41,7 +41,7 @@ public class opponent : MonoBehaviour
     public AudioSource nextStageAudio;
     public AudioSource dieAudio;
 
-    public Material glow;
+    public Material aGlow;
     public light lightScript;
 
     // Start is called before the first frame update
@@ -178,7 +178,7 @@ public class opponent : MonoBehaviour
         //livesText.SetText("Lives "+lives);
 
         dieAudio.Play();
-        glow.SetColor("_EmissionColor", Color.HSVToRGB(0f, 0f, 0f));
+        aGlow.SetColor("_EmissionColor", Color.HSVToRGB(0f, 0f, 0f));
         lightScript.rainbow = false;
         //Debug.Log("You Lost Bozo");
         //Debug.Log(currentBot);
@@ -201,14 +201,14 @@ public class opponent : MonoBehaviour
                 if (currentBot.get_level() == 1) {
                     lightScript.rainbow = false;
                     Debug.Log("light level 1");
-                    glow.SetColor("_EmissionColor", Color.HSVToRGB(0f, 0f, 1f));
+                    aGlow.SetColor("_EmissionColor", Color.HSVToRGB(0f, 0f, 1f));
 
                 }
                 else if (currentBot.get_level() == 2) {
                     lightScript.rainbow = true;
                     Debug.Log("light level 2");
 
-                    glow.SetColor("_EmissionColor", Color.HSVToRGB(0f, 0f, 1f));
+                    aGlow.SetColor("_EmissionColor", Color.HSVToRGB(0f, 0f, 1f));
                 }
 
                 lives = maxLives;
