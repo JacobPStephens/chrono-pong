@@ -16319,7 +16319,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mat: {fileID: 2100000, guid: ee2efbb817178f0459a848499d2c0ddf, type: 2}
-  colorSpeed: 1
+  colorSpeed: 0.2
   rainbow: 0
 --- !u!1001 &985573722
 PrefabInstance:
