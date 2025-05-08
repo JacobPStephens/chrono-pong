@@ -27,6 +27,8 @@ public class opponent : MonoBehaviour
 
     public Bot currentBot;
 
+    public oppPaddle oppPaddleScript;
+
     public TMP_Text stageText;
 
     public TMP_Text livesText;
@@ -94,7 +96,7 @@ public class opponent : MonoBehaviour
     }
 
     public Vector3 GetRandomPosition() {
-        return new Vector3(Random.Range(-0.5f,0.5f), 1.4f, ball.transform.position.z);
+        return new Vector3(ball.transform.position.x, 1.4f, ball.transform.position.z);
     }
 
     private void StopBall(Rigidbody ballRb) {
@@ -146,7 +148,9 @@ public class opponent : MonoBehaviour
         missChance = Random.Range(0f,1f);
 
         if (hitCounter <= currentBot.get_grace() || missChance > currentBot.get_miss()){
+            oppPaddleScript.MovePaddle(ball.transform.position);
             ReturnBall(ball);
+            
         }
         else {
             HandleOpponentLost();
