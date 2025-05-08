@@ -58,7 +58,7 @@ public class rightPaddle : MonoBehaviour
             nextFrame = false;
         }
         if (ballHit) {
-            Debug.Log("BALL HIT");
+            //Debug.Log("BALL HIT");
             HitBall(ball, QueueAverage(lastVelocities));
             //HitBall(ball, velocity);
             ballHit = false;
@@ -72,16 +72,15 @@ public class rightPaddle : MonoBehaviour
 
     private Vector3 QueueAverage(Queue<Vector3> q) {
         
-        Debug.Log("IN QUEUE AVG FUNCTION....");
+        //Debug.Log("IN QUEUE AVG FUNCTION....");
 
         Vector3[] tmpArr = q.ToArray();
         Vector3 total = Vector3.zero;
         for (int i = 0; i < q.Count; i++) {
             total += tmpArr[i];
         }
-        Debug.Log(tmpArr);
-        Debug.Log("Average is " + total / q.Count);
-        Debug.Log("Last frame velocity is " + tmpArr[tmpArr.Length-1]);
+        //Debug.Log(tmpArr);
+        //Debug.Log("Last frame velocity is " + tmpArr[tmpArr.Length-1]);
 
         return (total / q.Count);
     }

@@ -196,6 +196,7 @@ public class opponent : MonoBehaviour
                 nextStageAudio.Play();
 
                 // handle lights
+                Debug.Log(currentBot.get_level());
                 if (currentBot.get_level() == 1) {
                     lightScript.rainbow = false;
                     Debug.Log("light level 1");
