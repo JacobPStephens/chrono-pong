@@ -5372,16 +5372,12 @@ MonoBehaviour:
   returnVelocity: {x: 0, y: 0, z: 0}
   ball: {fileID: 1718148861}
   target: {fileID: 1928547706}
-<<<<<<< HEAD
-  oppHearts: []
-=======
   oppHearts: {fileID: 1119991005}
   oppHeartsSR: {fileID: 1119991006}
   oppHeartsArray:
   - {fileID: 21300000, guid: afe85700a11abed4d91f4c0d48018231, type: 3}
   - {fileID: 21300000, guid: c5041f050d34ba344b157176ef25091b, type: 3}
   - {fileID: 21300000, guid: f7646572e2723054e86cfc79ddc82621, type: 3}
->>>>>>> 7c9a22610a654f91f58998d6f112c121ec94ed8e
   ballScript: {fileID: 1718148867}
   faceScript: {fileID: 363301019}
   oppPaddleScript: {fileID: 698622477}
@@ -16323,7 +16319,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mat: {fileID: 2100000, guid: ee2efbb817178f0459a848499d2c0ddf, type: 2}
-  colorSpeed: 1
+  colorSpeed: 0.2
   rainbow: 0
 --- !u!1001 &985573722
 PrefabInstance:
