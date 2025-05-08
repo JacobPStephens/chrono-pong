@@ -40,6 +40,7 @@ public class opponent : MonoBehaviour
     public AudioSource takeLifeAudio;
     public AudioSource nextStageAudio;
     public AudioSource dieAudio;
+    public AudioSource winAudio;
 
     public Material aGlow;
     public light lightScript;
@@ -47,9 +48,9 @@ public class opponent : MonoBehaviour
     // Start is called before the first frame update
     void Awake() {
         // level, grace, miss
-        bot1 = new Bot(0,0,1f);
-        bot2 = new Bot(1,1,25f);
-        bot3 = new Bot(2,3,25f);
+        bot1 = new Bot(0,1,1f);
+        bot2 = new Bot(1,1,0.25f);
+        bot3 = new Bot(2,3,0.25f);
         botArray[0] = bot1;
         botArray[1] = bot2;
         botArray[2] = bot3;
@@ -222,6 +223,7 @@ public class opponent : MonoBehaviour
             }
             else {
                 // winning is just losing in a different fashion
+                winAudio.Play();
                 HandlePlayerLost();
             }            
         }

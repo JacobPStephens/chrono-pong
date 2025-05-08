@@ -134,6 +134,6 @@ public class rightPaddle : MonoBehaviour
     void Update()
     {
         transform.position = rightController.transform.position;
-        transform.rotation = rightController.transform.rotation * Quaternion.Euler(0f,173f,90f);
+        transform.rotation = rightController.transform.rotation * Quaternion.Euler(35f,173f,90f);
     }
 }

@@ -29,6 +29,8 @@ public class time : MonoBehaviour
     public GameObject ball;
     private Rigidbody ballRb;
 
+    public float slowDecrement;
+
     
     
     private (Vector3, Vector3) mostRecentState;
@@ -42,6 +44,7 @@ public class time : MonoBehaviour
         ballRb = ball.GetComponent<Rigidbody>();
         timeState = "normal";
         InvokeRepeating("SetRecordTrue", 0f, recordInterval);
+        meter = maxMeter;
     }
     void Update()
     {   
@@ -71,7 +74,7 @@ public class time : MonoBehaviour
             reset = false;
         }
         if (record) {
-            Record();
+            //Record();
             record = false;
         }
 
@@ -98,7 +101,7 @@ public class time : MonoBehaviour
             meter += meterPassiveRegen * Time.deltaTime;
         }
         if (timeState == "slow") {
-            meter -= Time.deltaTime;
+            meter -= Time.deltaTime * slowDecrement;
             if (meter <= 0f) {
                 timeState = "normal";
                 ChangeTimeScale(1.0f);
@@ -195,7 +198,7 @@ public class time : MonoBehaviour
     
         if (bufferTimer > 0f) {
             if (meter >= 0.95f * maxMeter){
-                StartRewind();
+                //StartRewind();
             }
             else {
                 bufferTimer = -100f;
