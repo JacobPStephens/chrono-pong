@@ -7,14 +7,13 @@ public class light : MonoBehaviour
     // Start is called before the first frame update
     public Material mat;
     private float hue;
-    private float val;
     public float colorSpeed;
+
+    public bool rainbow;
     void Start()
     {
-        
-        hue = 0f;
-        val = 0f;
-        mat.SetColor("_EmissionColor", Color.HSVToRGB(0f, 0f, 1f));
+        rainbow = false;
+        mat.SetColor("_EmissionColor", Color.HSVToRGB(0f, 0f, 0f));
         
     }
 
@@ -22,10 +21,14 @@ public class light : MonoBehaviour
     void Update()
     {
 
-        //val = (val + Time.deltaTime * colorSpeed) % 1f;
-        //mat.SetColor("_EmissionColor", Color.HSVToRGB(0f, 0f, val));
-        //hue = (hue + Time.deltaTime * colorSpeed) % 1f;
-        //Debug.Log(hue);
+        if (!rainbow) {
+            return;
+        }
+
+        Debug.Log("light in update");
+        mat.SetColor("_EmissionColor", Color.HSVToRGB(hue, 1f, 1f));
+        hue = (hue + Time.deltaTime * colorSpeed) % 1f;
         
     }
+
 }

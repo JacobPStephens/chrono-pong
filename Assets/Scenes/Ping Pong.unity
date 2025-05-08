@@ -5372,6 +5372,7 @@ MonoBehaviour:
   returnVelocity: {x: 0, y: 0, z: 0}
   ball: {fileID: 1718148861}
   target: {fileID: 1928547706}
+  oppHearts: []
   ballScript: {fileID: 1718148867}
   faceScript: {fileID: 363301019}
   oppPaddleScript: {fileID: 698622477}
@@ -5379,6 +5380,8 @@ MonoBehaviour:
   livesText: {fileID: 155338002}
   takeLifeAudio: {fileID: 381289445}
   nextStageAudio: {fileID: 381289446}
+  glow: {fileID: 2100000, guid: ee2efbb817178f0459a848499d2c0ddf, type: 2}
+  lightScript: {fileID: 943987047}
 --- !u!82 &381289445
 AudioSource:
   m_ObjectHideFlags: 0
@@ -16312,6 +16315,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mat: {fileID: 2100000, guid: ee2efbb817178f0459a848499d2c0ddf, type: 2}
   colorSpeed: 1
+  rainbow: 0
 --- !u!1001 &985573722
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16620,6 +16624,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mat: {fileID: 2100000, guid: ee2efbb817178f0459a848499d2c0ddf, type: 2}
   colorSpeed: 1
+  rainbow: 0
 --- !u!23 &1077783497
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -18038,6 +18043,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mat: {fileID: 2100000, guid: ee2efbb817178f0459a848499d2c0ddf, type: 2}
   colorSpeed: 1
+  rainbow: 0
 --- !u!23 &1504482153
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -18136,6 +18142,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mat: {fileID: 2100000, guid: ee2efbb817178f0459a848499d2c0ddf, type: 2}
   colorSpeed: 1
+  rainbow: 0
 --- !u!23 &1526295349
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -18563,6 +18570,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mat: {fileID: 2100000, guid: ee2efbb817178f0459a848499d2c0ddf, type: 2}
   colorSpeed: 1
+  rainbow: 0
 --- !u!23 &1645893815
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -19716,7 +19724,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: d1f9fad0c705721408b2dc2508730edb, type: 2}
+  - {fileID: 2100000, guid: ee2efbb817178f0459a848499d2c0ddf, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

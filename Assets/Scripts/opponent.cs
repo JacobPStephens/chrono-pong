@@ -38,6 +38,9 @@ public class opponent : MonoBehaviour
     public AudioSource takeLifeAudio;
     public AudioSource nextStageAudio;
 
+    public Material glow;
+    public light lightScript;
+
     // Start is called before the first frame update
     void Awake() {
         // level, grace, miss
@@ -168,6 +171,10 @@ public class opponent : MonoBehaviour
         stageText.SetText("Stage "+currentBot.get_level());
         lives = maxLives;
         livesText.SetText("Lives "+lives);
+
+
+        glow.SetColor("_EmissionColor", Color.HSVToRGB(0f, 0f, 0f));
+        lightScript.rainbow = false;
         //Debug.Log("You Lost Bozo");
         //Debug.Log(currentBot);
     }
@@ -183,6 +190,20 @@ public class opponent : MonoBehaviour
                 //Debug.Log("You have advanced to level "+currentBot.get_level());
                 stageText.SetText("Stage "+currentBot.get_level());
                 nextStageAudio.Play();
+
+                // handle lights
+                if (currentBot.get_level() == 1) {
+                    lightScript.rainbow = false;
+                    Debug.Log("light level 1");
+                    glow.SetColor("_EmissionColor", Color.HSVToRGB(0f, 0f, 1f));
+
+                }
+                else if (currentBot.get_level() == 2) {
+                    lightScript.rainbow = true;
+                    Debug.Log("light level 2");
+
+                    glow.SetColor("_EmissionColor", Color.HSVToRGB(0f, 0f, 1f));
+                }
 
                 lives = maxLives;
 
