@@ -81,6 +81,8 @@ public class opponent : MonoBehaviour
         returnVelocity = velocity;
         ballScript.playerLastTouched = false;
 
+        ballScript.AudioPlayBounce();
+
         StartCoroutine(faceScript.HitBall());
         //Debug.Log("Changed velocity to " + velocity);//;+ " Actual Velocity " + ballRb.velocity);
 
