@@ -16,6 +16,8 @@ public class opponent : MonoBehaviour
 
     public GameObject target;
 
+    public Sprite[] oppHearts;
+
     public ball ballScript;
 
     public face faceScript;
@@ -32,6 +34,9 @@ public class opponent : MonoBehaviour
     public TMP_Text stageText;
 
     public TMP_Text livesText;
+
+    public AudioSource takeLifeAudio;
+    public AudioSource nextStageAudio;
 
     // Start is called before the first frame update
     void Awake() {
@@ -177,6 +182,7 @@ public class opponent : MonoBehaviour
                 hitCounter = 0;
                 //Debug.Log("You have advanced to level "+currentBot.get_level());
                 stageText.SetText("Stage "+currentBot.get_level());
+                nextStageAudio.Play();
 
                 lives = maxLives;
 
@@ -186,6 +192,7 @@ public class opponent : MonoBehaviour
             }            
         }
         livesText.SetText("Lives "+lives);
+        takeLifeAudio.Play();
     }
 }
 
