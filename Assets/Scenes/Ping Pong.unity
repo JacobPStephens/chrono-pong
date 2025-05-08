@@ -5372,12 +5372,9 @@ MonoBehaviour:
   target: {fileID: 1928547706}
   ballScript: {fileID: 1718148867}
   faceScript: {fileID: 363301019}
-<<<<<<< HEAD
   stageText: {fileID: 1775741230}
   livesText: {fileID: 155338002}
-=======
   oppPaddleScript: {fileID: 698622477}
->>>>>>> b7b58abbc59a142692639770a2d189f2f97ef494
 --- !u!1 &437262249 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 9014170783809206332, guid: 895f6f3c2d334633b5800312285058d2,

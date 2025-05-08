@@ -35,9 +35,10 @@ public class opponent : MonoBehaviour
 
     // Start is called before the first frame update
     void Awake() {
-        bot1 = new Bot(0,3,.1f);
-        bot2 = new Bot(1,5,.08f);
-        bot3 = new Bot(2,10,.05f);
+        // level, grace, miss
+        bot1 = new Bot(0,0,1f);
+        bot2 = new Bot(1,0,1f);
+        bot3 = new Bot(2,0,1f);
         botArray[0] = bot1;
         botArray[1] = bot2;
         botArray[2] = bot3;
@@ -152,9 +153,9 @@ public class opponent : MonoBehaviour
             ReturnBall(ball);
             
         }
-        else {
-            HandleOpponentLost();
-        }
+        // else {
+        //     HandleOpponentLost();
+        // }
     }
 
     public void HandlePlayerLost(){
@@ -168,21 +169,23 @@ public class opponent : MonoBehaviour
 
     public void HandleOpponentLost() { 
         lives -= 1;
-        Debug.Log("I have been shot");
-        livesText.SetText("Lives "+lives);
+        //Debug.Log("I have been shot");
+        //livesText.SetText("Lives "+lives);
         if (lives == 0) {
             currentBot = botArray[currentBot.get_level()+1];
-            if (currentBot.get_level() != 2) {
+            if (currentBot.get_level() != 3) {
                 hitCounter = 0;
                 //Debug.Log("You have advanced to level "+currentBot.get_level());
                 stageText.SetText("Stage "+currentBot.get_level());
 
                 lives = maxLives;
+
             }
             else {
                 Debug.Log("You win");
             }            
         }
+        livesText.SetText("Lives "+lives);
     }
 }
 
