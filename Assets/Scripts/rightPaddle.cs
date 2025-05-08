@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.XR.Interaction.Toolkit;
 
 
 public class rightPaddle : MonoBehaviour
@@ -17,7 +18,7 @@ public class rightPaddle : MonoBehaviour
     public bool nextFrame;
     public Vector3 velocity;
     public GameObject ball;
-    //public ActionBasedController xrRight;
+    public XRBaseController xrRight;
 
     public ball ballScript;
 
@@ -92,7 +93,7 @@ public class rightPaddle : MonoBehaviour
 
         //Debug.Log("HIT BALL. PREVIOUS BALL VELOCITY = " + ballRb.velocity);
         //Debug.Log("HIT BALL. PADDLE VELOCITY = " + paddleVelocity);
-        //TriggerHaptic();
+        TriggerHaptic();
         ballRb.AddForce(paddleVelocity, ForceMode.Impulse);
         ballScript.playerLastTouched = true;
         ballScript.playerLastZone = true;
@@ -102,11 +103,9 @@ public class rightPaddle : MonoBehaviour
 
     }
 
-    // public void TriggerHaptic() {
-    //     // xrRight = (XRController) GameObject.FindObjectOfType(typeof(XRController));
-    //     xrRight = rightController.GetComponent<XRController>();
-    //     xrRight.SendHapticImpulse(1f,1f);
-    // }
+    public void TriggerHaptic() {
+        xrRight.SendHapticImpulse(.5f,.05f);
+    }
 
     void OnCollisionEnter(Collision col) {
         //Debug.Log("paddle collided with " + col.gameObject.name);
