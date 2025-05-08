@@ -215,7 +215,8 @@ public class opponent : MonoBehaviour
 
             }
             else {
-                Debug.Log("You win");
+                // winning is just losing in a different fashion
+                HandlePlayerLost();
             }            
         }
         //livesText.SetText("Lives "+lives);
