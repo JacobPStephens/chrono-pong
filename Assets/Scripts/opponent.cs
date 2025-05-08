@@ -16,7 +16,9 @@ public class opponent : MonoBehaviour
 
     public GameObject target;
 
-    public Sprite[] oppHearts;
+    public GameObject oppHearts;
+    public SpriteRenderer oppHeartsSR;
+    public Sprite[] oppHeartsArray;
 
     public ball ballScript;
 
@@ -50,6 +52,7 @@ public class opponent : MonoBehaviour
         //Debug.Log(botArray[0].get_level());
         currentBot = bot1;
         lives = maxLives;
+        oppHeartsSR  = oppHearts.GetComponent<SpriteRenderer>();
     }
     
     void Start()
@@ -167,7 +170,8 @@ public class opponent : MonoBehaviour
         currentBot = botArray[0];
         stageText.SetText("Stage "+currentBot.get_level());
         lives = maxLives;
-        livesText.SetText("Lives "+lives);
+        oppHeartsSR.sprite = oppHeartsArray[lives-1];
+        //livesText.SetText("Lives "+lives);
         //Debug.Log("You Lost Bozo");
         //Debug.Log(currentBot);
     }
@@ -191,7 +195,10 @@ public class opponent : MonoBehaviour
                 Debug.Log("You win");
             }            
         }
-        livesText.SetText("Lives "+lives);
+        //livesText.SetText("Lives "+lives);
+
+        oppHeartsSR.sprite = oppHeartsArray[lives-1];
+
         takeLifeAudio.Play();
     }
 }

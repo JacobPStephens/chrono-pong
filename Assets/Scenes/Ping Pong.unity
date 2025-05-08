@@ -158,7 +158,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &155338002
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5372,6 +5372,12 @@ MonoBehaviour:
   returnVelocity: {x: 0, y: 0, z: 0}
   ball: {fileID: 1718148861}
   target: {fileID: 1928547706}
+  oppHearts: {fileID: 1119991005}
+  oppHeartsSR: {fileID: 1119991006}
+  oppHeartsArray:
+  - {fileID: 21300000, guid: afe85700a11abed4d91f4c0d48018231, type: 3}
+  - {fileID: 21300000, guid: c5041f050d34ba344b157176ef25091b, type: 3}
+  - {fileID: 21300000, guid: f7646572e2723054e86cfc79ddc82621, type: 3}
   ballScript: {fileID: 1718148867}
   faceScript: {fileID: 363301019}
   oppPaddleScript: {fileID: 698622477}
@@ -19535,7 +19541,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.59, y: 3.13}
+  m_AnchoredPosition: {x: -0.59, y: 2.76}
   m_SizeDelta: {x: 20, y: 5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1855398764
