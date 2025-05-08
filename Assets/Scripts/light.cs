@@ -14,6 +14,8 @@ public class light : MonoBehaviour
     {
         rainbow = false;
         mat.SetColor("_EmissionColor", Color.HSVToRGB(0f, 0f, 0f));
+        mat.DisableKeyword("_EMISSION");
+        mat.EnableKeyword("_EMISSION");
         
     }
 

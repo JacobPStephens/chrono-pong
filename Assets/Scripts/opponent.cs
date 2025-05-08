@@ -47,7 +47,7 @@ public class opponent : MonoBehaviour
     // Start is called before the first frame update
     void Awake() {
         // level, grace, miss
-        bot1 = new Bot(0,1,1f);
+        bot1 = new Bot(0,0,1f);
         bot2 = new Bot(1,1,25f);
         bot3 = new Bot(2,3,25f);
         botArray[0] = bot1;
@@ -179,6 +179,8 @@ public class opponent : MonoBehaviour
 
         dieAudio.Play();
         aGlow.SetColor("_EmissionColor", Color.HSVToRGB(0f, 0f, 0f));
+        aGlow.DisableKeyword("_EMISSION");
+        aGlow.EnableKeyword("_EMISSION");
         lightScript.rainbow = false;
         //Debug.Log("You Lost Bozo");
         //Debug.Log(currentBot);
@@ -202,6 +204,8 @@ public class opponent : MonoBehaviour
                     lightScript.rainbow = false;
                     Debug.Log("light level 1");
                     aGlow.SetColor("_EmissionColor", Color.HSVToRGB(0f, 0f, 1f));
+                    aGlow.DisableKeyword("_EMISSION");
+                    aGlow.EnableKeyword("_EMISSION");
 
                 }
                 else if (currentBot.get_level() == 2) {
@@ -209,6 +213,8 @@ public class opponent : MonoBehaviour
                     Debug.Log("light level 2");
 
                     aGlow.SetColor("_EmissionColor", Color.HSVToRGB(0f, 0f, 1f));
+                    aGlow.DisableKeyword("_EMISSION");
+                    aGlow.EnableKeyword("_EMISSION");
                 }
 
                 lives = maxLives;
