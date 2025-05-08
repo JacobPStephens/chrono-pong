@@ -34,7 +34,8 @@ public class time : MonoBehaviour
     private (Vector3, Vector3) mostRecentState;
     private bool record; // public for debug only
 
-    public GameObject meterUI;
+    public GameObject rightMeterUI;
+    public GameObject leftMeterUI;
     // Start is called before the first frame update
     void Start()
     {
@@ -49,7 +50,7 @@ public class time : MonoBehaviour
 
         // go until slow
         if ((timeState == "normal") && (bufferTimer <= 0f && bufferTimer > -50f)) {
-            ChangeTimeScale(0.35f);
+            ChangeTimeScale(0.5f);
             timeState = "slow";
         }
         if (timeState == "rewind" && rewindTimer <= 0f) {
@@ -58,7 +59,8 @@ public class time : MonoBehaviour
         }
 
         HandleMeter();
-        HandleMeterUI();
+        HandleMeterUI(rightMeterUI);
+        HandleMeterUI(leftMeterUI);
         HandleTimers();
         
 
@@ -74,7 +76,7 @@ public class time : MonoBehaviour
         }
 
     }
-    void HandleMeterUI() {
+    void HandleMeterUI(GameObject meterUI) {
         float meterPercent = meter / maxMeter;
         meterUI.transform.localScale = new Vector3(0.99f*meterPercent, 1.1f, 0.99f*meterPercent);
     }
