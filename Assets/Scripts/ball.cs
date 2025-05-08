@@ -26,7 +26,8 @@ public class ball : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        // ut oh spagetti oh
+        playerLastZone = true;
+        playerLastTouched = true;
     }
 
     // Update is called once per frame
@@ -82,7 +83,9 @@ public class ball : MonoBehaviour
         }
     }
     public void TriggerOpponentZone(){
+        //Debug.Log("e2");
         if(!playerLastZone && doubleBounceBuffer <=0){
+            //Debug.Log("e");
             opponentScript.HandleOpponentLost();
             EndRound();
         }
@@ -96,6 +99,7 @@ public class ball : MonoBehaviour
         EndRound();
     }
     public void TriggerOpponentNetZone(){
+        //Debug.Log("b");
         opponentScript.HandleOpponentLost();
         EndRound();
     }
@@ -106,11 +110,13 @@ public class ball : MonoBehaviour
                 EndRound();            
             }
             else{
+                //Debug.Log("c");
                 opponentScript.HandleOpponentLost();
             }
         }
         else{
             if(playerLastTouched){
+                //Debug.Log("d");
                 opponentScript.HandleOpponentLost();
             }
             else{

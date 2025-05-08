@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class opponent : MonoBehaviour
 {
@@ -25,6 +26,10 @@ public class opponent : MonoBehaviour
     public Bot[] botArray = new Bot[3]; 
 
     public Bot currentBot;
+
+    public TMP_Text stageText;
+
+    public TMP_Text livesText;
 
     // Start is called before the first frame update
     void Awake() {
@@ -150,19 +155,24 @@ public class opponent : MonoBehaviour
 
     public void HandlePlayerLost(){
         currentBot = botArray[0];
+        stageText.SetText("Stage "+currentBot.get_level());
         lives = maxLives;
-        Debug.Log("You Lost Bozo");
+        livesText.SetText("Lives "+lives);
+        //Debug.Log("You Lost Bozo");
         //Debug.Log(currentBot);
     }
 
     public void HandleOpponentLost() { 
         lives -= 1;
         Debug.Log("I have been shot");
+        livesText.SetText("Lives "+lives);
         if (lives == 0) {
             currentBot = botArray[currentBot.get_level()+1];
             if (currentBot.get_level() != 2) {
                 hitCounter = 0;
-                Debug.Log("You have advanced to level "+currentBot.get_level());
+                //Debug.Log("You have advanced to level "+currentBot.get_level());
+                stageText.SetText("Stage "+currentBot.get_level());
+
                 lives = maxLives;
             }
             else {

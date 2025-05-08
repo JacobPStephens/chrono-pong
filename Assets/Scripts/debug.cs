@@ -31,7 +31,7 @@ public class debug : MonoBehaviour
     {   
         ballRb = ball.GetComponent<Rigidbody>();
         spawnPoint = ball.transform.position;
-
+        LaunchBall();
     }
 
     // Update is called once per frame
