@@ -39,6 +39,7 @@ public class opponent : MonoBehaviour
 
     public AudioSource takeLifeAudio;
     public AudioSource nextStageAudio;
+    public AudioSource dieAudio;
 
     public Material glow;
     public light lightScript;
@@ -46,9 +47,9 @@ public class opponent : MonoBehaviour
     // Start is called before the first frame update
     void Awake() {
         // level, grace, miss
-        bot1 = new Bot(0,0,1f);
-        bot2 = new Bot(1,0,1f);
-        bot3 = new Bot(2,0,1f);
+        bot1 = new Bot(0,1,1f);
+        bot2 = new Bot(1,1,25f);
+        bot3 = new Bot(2,3,25f);
         botArray[0] = bot1;
         botArray[1] = bot2;
         botArray[2] = bot3;
@@ -176,7 +177,7 @@ public class opponent : MonoBehaviour
         oppHeartsSR.sprite = oppHeartsArray[lives-1];
         //livesText.SetText("Lives "+lives);
 
-
+        dieAudio.Play();
         glow.SetColor("_EmissionColor", Color.HSVToRGB(0f, 0f, 0f));
         lightScript.rainbow = false;
         //Debug.Log("You Lost Bozo");
